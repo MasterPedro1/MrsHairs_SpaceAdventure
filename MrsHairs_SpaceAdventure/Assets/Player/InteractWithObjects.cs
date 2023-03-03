@@ -17,7 +17,7 @@ public class InteractWithObjects : MonoBehaviour
     {
         float triggerValue = pinchAction.action.ReadValue<float>();
         //Debug.Log(triggerValue);
-        IdentifyObject();
+        
         if (Input.GetMouseButton(0))
         {
             TryGrab();
@@ -28,13 +28,6 @@ public class InteractWithObjects : MonoBehaviour
             objectGrabbable= null;
         }
      
-    }
-    private void IdentifyObject()
-    {
-        RaycastHit hit;
-        isAProp = Physics.Raycast(rayCastOrigin.position, rayCastOrigin.transform.forward, out hit, rayCastMaxDistance);
-        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.transform.forward, Color.red);
-        //if (hit.collider != null) Debug.Log("Estás viendo " + hit.collider.name);
     }
     private void TryGrab()
     {
