@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class InteractWithObjects : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class InteractWithObjects : MonoBehaviour
     [SerializeField] Transform rayCastOrigin, objectGrabPoint;
     [SerializeField] float rayCastMaxDistance;
     [SerializeField] LayerMask propsLayer;
+    
     bool isAProp = false;
+
+    RaycastHit hit;
     Grabbable objectGrabbable;
+    AdvancedInteractions advancedInteractions;
 
     private void Update()
     {
@@ -20,29 +25,40 @@ public class InteractWithObjects : MonoBehaviour
         
         if (Input.GetMouseButton(0))
         {
-            TryGrab();
+            if (IsAProp())
+            {
+                Interact();
+            }           
         }
-        else if (triggerValue <= 0 && objectGrabbable != null)
+        else if (objectGrabbable != null)
         {
             objectGrabbable.Drop();
             objectGrabbable= null;
         }
      
     }
-    private void TryGrab()
-    {
-        RaycastHit hit;
-        isAProp = Physics.Raycast(rayCastOrigin.position, rayCastOrigin.transform.forward, out hit, rayCastMaxDistance, propsLayer);
-        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.transform.forward, Color.green);
+    private void Interact()
+    {       
        //if (hit.collider != null) Debug.Log("Agarraste " + hit.collider.name);
         if (objectGrabbable == null)
         {
-            if (isAProp && hit.transform.TryGetComponent(out objectGrabbable))
+            if (hit.transform.TryGetComponent(out objectGrabbable))
             {
                 objectGrabbable.Grab(objectGrabPoint);
                 //Debug.Log(hit.transform);
             }
+            else if (hit.transform.TryGetComponent(out advancedInteractions))
+            {
+                advancedInteractions.InvokeAdvancedInteraction();
+            }
         }
         //if (hit.collider !=  null) Debug.Log(hit.transform);
+    }
+
+    private bool IsAProp()
+    {        
+        isAProp = Physics.Raycast(rayCastOrigin.position, rayCastOrigin.transform.forward, out hit, rayCastMaxDistance, propsLayer);
+        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.transform.forward, Color.green);
+        return isAProp;
     }
 }
