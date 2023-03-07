@@ -12,6 +12,7 @@ public class InteractWithObjects : MonoBehaviour
     [SerializeField] float rayCastMaxDistance;
     [SerializeField] LayerMask propsLayer;
     [SerializeField] LayerMask gunsLayer;
+    private Shoot sh;
 
     bool isAProp = false;
     public bool isAGun = false;
@@ -46,6 +47,17 @@ public class InteractWithObjects : MonoBehaviour
             objectGrabbable.Drop();
             objectGrabbable= null;
         }
+
+        if(Input.GetMouseButton(1) && objectGrabbable != null)
+        {
+            sh = objectGrabbable.gameObject.GetComponent<Shoot>();
+
+                Debug.Log("Esta Disparando");
+                sh.Disparar();
+
+
+            
+        }
      
     }
     private void Interact()
@@ -62,7 +74,12 @@ public class InteractWithObjects : MonoBehaviour
             {
                 advancedInteractions.InvokeAdvancedInteraction();
             }
+
+           
+               
         }
+
+
         //if (hit.collider !=  null) Debug.Log(hit.transform);
     }
 
