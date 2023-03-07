@@ -11,8 +11,10 @@ public class InteractWithObjects : MonoBehaviour
     [SerializeField] Transform rayCastOrigin, objectGrabPoint;
     [SerializeField] float rayCastMaxDistance;
     [SerializeField] LayerMask propsLayer;
-    
+    [SerializeField] LayerMask gunsLayer;
+
     bool isAProp = false;
+    public bool isAGun = false;
 
     RaycastHit hit;
     Grabbable objectGrabbable;
@@ -28,7 +30,16 @@ public class InteractWithObjects : MonoBehaviour
             if (IsAProp())
             {
                 Interact();
-            }           
+            }         
+
+            if(IsGun())
+            {
+                isAGun = true;
+                Interact();
+            }
+
+            else
+                isAGun = false;
         }
         else if (objectGrabbable != null)
         {
@@ -60,5 +71,13 @@ public class InteractWithObjects : MonoBehaviour
         isAProp = Physics.Raycast(rayCastOrigin.position, rayCastOrigin.transform.forward, out hit, rayCastMaxDistance, propsLayer);
         Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.transform.forward, Color.green);
         return isAProp;
+    }
+
+    private bool IsGun()
+    {
+        
+        isAGun = Physics.Raycast(rayCastOrigin.position, rayCastOrigin.transform.forward, out hit, rayCastMaxDistance, gunsLayer);
+        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.transform.forward, Color.green);
+        return isAGun;
     }
 }

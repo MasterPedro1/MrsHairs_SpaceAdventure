@@ -9,6 +9,7 @@ public class Grabbable : MonoBehaviour
     Transform objectGrabPoint;
     [SerializeField] private float grabForce;
     [SerializeField]private float lerpSpeed = 1f;
+    
     private void Awake()
     {
         rbObj= GetComponent<Rigidbody>();
@@ -22,6 +23,7 @@ public class Grabbable : MonoBehaviour
         rbObj.isKinematic = true;
         rbObj.drag = grabForce;
         rbObj.interpolation = RigidbodyInterpolation.Extrapolate;
+        
 
     }
     public void Drop()
