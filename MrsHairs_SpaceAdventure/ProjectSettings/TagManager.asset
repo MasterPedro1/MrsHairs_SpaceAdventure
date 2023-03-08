@@ -8,6 +8,7 @@ TagManager:
   - Knife
   - FryIns
   - Food
+  - Ingredient
   layers:
   - Default
   - TransparentFX
