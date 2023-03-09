@@ -8,6 +8,10 @@ public class Shoot : MonoBehaviour
 
     public GameObject balaPrefab; 
     public Transform puntoDisparo;
+    public GameObject Boom;
+    public float showRate = 5f;
+
+    private float showRateTime;
 
     void Update()
     {
@@ -16,12 +20,20 @@ public class Shoot : MonoBehaviour
 
     public void Disparar()
     {
+            
 
-        
-        
+        if (Time.time > showRateTime)
+        {
             GameObject bala = Instantiate(balaPrefab, puntoDisparo.position, puntoDisparo.rotation);
 
-            bala.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+            bala.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+
+            showRateTime = Time.time + showRate;
+
+            Destroy(bala, 2);
+        }
+
         
+            
     }
 }
