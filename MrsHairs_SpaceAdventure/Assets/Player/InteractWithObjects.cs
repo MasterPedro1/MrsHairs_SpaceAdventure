@@ -55,7 +55,7 @@ public class InteractWithObjects : MonoBehaviour
             Debug.Log("Esta Disparando");
             sh.Disparar();
         }
-        else
+        else if (sh != null)
             sh.Boom.SetActive(false);
      
     }
