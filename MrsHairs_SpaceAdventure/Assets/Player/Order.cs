@@ -1,9 +1,12 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Order : MonoBehaviour
+public class Order
 {
+    public float orderTimeLimit = 30;
+    
     [SerializeField]
     private List<Dish> possibleDishes = new List<Dish>();
     [SerializeField]
@@ -35,10 +38,4 @@ public class Order : MonoBehaviour
     }
     
 }
-
-[System.Serializable]
-public class DishOrder
-{
-    public int dishQuantity;
-    public Dish dishToGive;
-}
+*/
