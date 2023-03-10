@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour
     public Transform puntoDisparo;
     public GameObject Boom;
     public float showRate = 5f;
+    public float force;
 
     private float showRateTime;
 
@@ -26,7 +27,7 @@ public class Shoot : MonoBehaviour
         {
             GameObject bala = Instantiate(balaPrefab, puntoDisparo.position, puntoDisparo.rotation);
 
-            bala.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+            bala.GetComponent<Rigidbody>().AddForce(transform.forward * force);
 
             showRateTime = Time.time + showRate;
 

@@ -9,7 +9,6 @@ public class Dish : MonoBehaviour
     [Header("Dish Requirements")]
     public string DishName;
     public int NumberOfIngredients;
-    public List<string> IngredientsNames = new List<string>();
     public float TotalCookingTime;
     public List<Ingredient> Ingredients = new List<Ingredient>();
 
@@ -17,6 +16,7 @@ public class Dish : MonoBehaviour
     [SerializeField] GameObject preDish, finishedDish;
     [SerializeField] string tagName;
     List<string> ingNames = new List<string>();
+    List<string> IngredientsNames = new List<string>();
     int counter = 0;
     bool areAllIngredients = false;
 
