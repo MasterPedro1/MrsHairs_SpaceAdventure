@@ -9,6 +9,7 @@ TagManager:
   - FryIns
   - Food
   - Ingredient
+  - DeliverStation
   layers:
   - Default
   - TransparentFX
