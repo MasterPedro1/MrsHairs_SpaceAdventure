@@ -99630,14 +99630,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278404169}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1278404172
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -110113,7 +110113,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 07e63626e71345e448317ec2142a614c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.325922
+      value: -3.326
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 07e63626e71345e448317ec2142a614c,
         type: 3}
@@ -110123,7 +110123,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 07e63626e71345e448317ec2142a614c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.928078
+      value: 11.727
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 07e63626e71345e448317ec2142a614c,
         type: 3}
