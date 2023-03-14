@@ -51,12 +51,12 @@ public class InteractWithObjects : MonoBehaviour
         if (Input.GetMouseButton(1) && objectGrabbable != null)
         {
             sh = objectGrabbable.gameObject.GetComponent<Shoot>();
-            sh.Boom.SetActive(true);
-            Debug.Log("Esta Disparando");
+            sh.isAEnemy = true;
+            //Debug.Log("Esta Disparando");
             sh.Disparar();
         }
         else if (sh != null)
-            sh.Boom.SetActive(false);
+            sh.isAEnemy = false;
      
     }
     private void Interact()
