@@ -11,27 +11,38 @@ public class OrderManager : MonoBehaviour
 
     [Header("Order details")]
     public float _orderTimeLimit = 30;
-    public List<Dish> possibleDishes = new List<Dish>();
     public int minDishQuantity = 2, maxDishQuantity = 4;
-    public List<OrderDishes> dishesNeeded = new List<OrderDishes>();
+    public List<Dish> possibleDishes = new List<Dish>();
     
     IEnumerator PlaceOrder()
     {
-        while (true)
+        yield return new WaitForSeconds(orderAdditionTimer);
+
+        if (orderList.Count < orderListLimit)
         {
-            if (orderList.Count < orderListLimit)
+            Order newOrder = CreateOrder();
+            orderList.Add(newOrder);
+            print("New Order:");
+            for(int i = 0; i < newOrder.dishesNeeded.Count; i++)
             {
-                
+                print(newOrder.dishesNeeded[i].dishQuantity + " " + newOrder.dishesNeeded[i].dishToGive.dishName);
+
             }
         }
-        yield return new WaitForSeconds(orderAdditionTimer);
+        StartCoroutine(PlaceOrder());
     }
-    IEnumerator CreateOrder()
+    private Order CreateOrder()
     {
         // Cloned list to pick dishes from
-        List<Dish> dishes = possibleDishes;
+        List<Dish> dishes = new List<Dish>();
+        for (int i = 0; i < possibleDishes.Count; i++)
+        {
+            dishes.Add(possibleDishes[i]);
+        }
+        // Create a new order to add it to the list
+        Order nextOrder = new Order();
         // Amount of different dishes used for this order
-        int numberOfNextDishes = Random.Range(0, dishes.Count);
+        int numberOfNextDishes = Random.Range(1, dishes.Count);
         while(numberOfNextDishes > 0)
         {
             // Choose the dish to add to the order
@@ -43,17 +54,24 @@ public class OrderManager : MonoBehaviour
             OrderDishes nextDeliverOrder = new OrderDishes();
             nextDeliverOrder.dishQuantity = Random.Range(minDishQuantity, maxDishQuantity);
             nextDeliverOrder.dishToGive = nextDish;
-            dishesNeeded.Add(nextDeliverOrder);
+            nextOrder.dishesNeeded.Add(nextDeliverOrder);
             numberOfNextDishes--;
         }
-        yield return null;
+        return nextOrder;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(PlaceOrder());
     }
 }
+
+
+// Order classes
+
 [System.Serializable]
 public class Order
 {
-    public float orderTime;
-    public int minDishQuantity, maxDishQuantity;
     public List<OrderDishes> dishesNeeded = new List<OrderDishes>();
 }
 
