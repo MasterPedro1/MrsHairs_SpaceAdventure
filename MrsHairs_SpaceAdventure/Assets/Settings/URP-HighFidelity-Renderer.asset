@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4204410551029700253
+--- !u!114 &-2690996200517255359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Settings:
-    technique: 0
+    technique: 2
     maxDrawDistance: 1000
     dBufferSettings:
-      surfaceData: 2
+      surfaceData: 1
     screenSpaceSettings:
       normalBlend: 0
       useGBuffer: 1
@@ -63,8 +63,8 @@ MonoBehaviour:
       type: 3}
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
-  - {fileID: -4204410551029700253}
-  m_RendererFeatureMap: adc0de57c6d2eee56369f837e1eea6c5
+  - {fileID: -2690996200517255359}
+  m_RendererFeatureMap: adc0de57c6d2eee5413f3e9036a9a7da
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

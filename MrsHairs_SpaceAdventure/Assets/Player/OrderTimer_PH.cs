@@ -28,5 +28,13 @@ public class OrderTimer_PH : MonoBehaviour
     {
         print("Order succesful!");
         StopCoroutine(CountTime());
+        StopAllCoroutines();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Food")
+        {
+            onDeliver.Invoke();
+        }
     }
 }
