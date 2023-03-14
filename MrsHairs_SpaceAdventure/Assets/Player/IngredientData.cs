@@ -6,11 +6,12 @@ public class IngredientData : MonoBehaviour
 {
     [SerializeField] Ingredient ingredient;
     public string IngName;
-    public float CTime;
+    public bool IsCutted, IsFryed;
 
     private void Awake()
     {
         IngName = ingredient.IngredientName;
-        CTime = ingredient.cookingTime;
+        IsCutted = false;
+        IsFryed = false;    
     }
 }

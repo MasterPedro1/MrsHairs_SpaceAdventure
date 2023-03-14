@@ -15,6 +15,8 @@ public class Dish : MonoBehaviour
     [Header("Dish")]
     [SerializeField] GameObject preDish, finishedDish;
     [SerializeField] string tagName;
+    public bool IsReadyToCook = false, IsDishFinished = false;
+
     List<string> ingNames = new List<string>();
     List<string> IngredientsNames = new List<string>();
     int counter = 0;
@@ -30,6 +32,8 @@ public class Dish : MonoBehaviour
     {
         if(other.tag == tagName)
         {
+            if (IsReadyToCook) return;
+
             Debug.Log(other.tag);
             try
             {                
@@ -37,13 +41,14 @@ public class Dish : MonoBehaviour
                 
                 ingNames.Add(IngData.IngName);
                 IngredientsNames = ingNames.Distinct().ToList();
+                ingNames.Clear();
                 //IngredientsNames.Add(IngData.IngName);
             }
             catch
             {
                 Debug.Log("Te faltó el ");
             }
-            if (IngredientsNames.Count == NumberOfIngredients) 
+            if (IngredientsNames.Count >= NumberOfIngredients) 
             { 
                 CheckIngredients();
                 if (areAllIngredients)
@@ -51,6 +56,7 @@ public class Dish : MonoBehaviour
                     other.gameObject.SetActive(false);
                     preDish.SetActive(false);
                     finishedDish.SetActive(true);
+                    IsReadyToCook = true;
                 }
             }
         }
@@ -69,7 +75,7 @@ public class Dish : MonoBehaviour
                     if (counter >= NumberOfIngredients)
                     {
                         areAllIngredients = true;
-
+                        IngredientsNames.Clear();
                     }
                 }
             }

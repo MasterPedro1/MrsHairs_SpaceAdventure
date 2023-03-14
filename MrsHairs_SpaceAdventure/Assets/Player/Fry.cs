@@ -9,9 +9,11 @@ public class Fry : MonoBehaviour
     [SerializeField] float cookingTime;
     Transform foodT;
     GameObject foodBar;
-    public bool IsCooking = false, IsCoolDownOn;
+    public bool IsCooking = false, IsCoolDownOn = false;
     ProgressBar progressBar;
     float secondTimer = 0f;
+
+    Dish _dishData;
 
     private void Update()
     {
@@ -26,18 +28,47 @@ public class Fry : MonoBehaviour
     {       
         if (other.CompareTag("Food"))
         {
+            try
+            {
+                _dishData = other.GetComponent<Dish>();
+                if(!_dishData.IsReadyToCook)
+                {
+                    return;
+                }
+
+                if (!IsCoolDownOn)
+                {
+                    //other.gameObject.transform.SetParent(this.transform, true);   
+                    other.gameObject.TryGetComponent(out progressBar);
+                    cookingBounds.SetActive(true);
+                    foodT = other.transform;
+                    progressBar.progressBarGO.SetActive(true);
+                    foodT.transform.eulerAngles = new Vector3(0f, foodT.rotation.y, 0f);
+                    IsCooking = true;
+                    StartCoroutine(Cooking(_dishData.TotalCookingTime));
+                }
+            }
+            catch
+            {
+                Debug.Log("Falta el componente Dish");
+            }                   
+            
+        }
+
+        if (other.tag == "Ingredient")
+        {
             if (!IsCoolDownOn)
             {
-                //other.gameObject.transform.SetParent(this.transform, true);   
-                other.gameObject.TryGetComponent(out progressBar);
-                cookingBounds.SetActive(true);
-                foodT = other.transform;
-                progressBar.progressBarGO.SetActive(true);
-                foodT.transform.eulerAngles = new Vector3(0f, foodT.rotation.y, 0f);
-                IsCooking = true;
-                StartCoroutine(Cooking(cookingTime));
-            }            
-            
+                try
+                {
+                    var ingDta = other.GetComponent<IngredientData>();
+                    ingDta.IsFryed = true;
+                }
+                catch 
+                {
+                    
+                }
+            }
         }
     }
 
@@ -62,6 +93,7 @@ public class Fry : MonoBehaviour
         yield return new WaitForSeconds(time);
             cookingBounds.SetActive(false);
             IsCooking = false;
+           _dishData.IsDishFinished = true;
             foodT.transform.eulerAngles = new Vector3(foodT.rotation.x, foodT.rotation.y, foodT.rotation.z);
             progressBar.progressBarGO.SetActive(false);
             foodT.gameObject.transform.SetParent(null);
