@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
     public Slider vidaSlider;
     public float vida = 100;
     public float slowingRadios = 4;
-
+    public bool ischocking = false;
+    
 
     [SerializeField] private Vector3 velocity;
     private Vector3 steering;
@@ -21,22 +22,12 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-       
+        
     }
 
     void Update()
     {
-        if(shoot.isAEnemy == true)
-        {
-            vida--;
-        }
-
         vidaSlider.value = vida;
-
-        if(vida <= 0)
-        {
-            Destroy(this.gameObject);
-        }
 
         this.transform.LookAt(Camera.main.transform);
 
@@ -55,6 +46,22 @@ public class Enemy : MonoBehaviour
         velocity += steering;
         transform.position += velocity * Time.deltaTime / speed;
 
+        if (shoot.hit.collider.CompareTag("Enemy") && shoot.hit.collider !=null)
+        {
+            ischocking = true;
+        }
+        else ischocking = false;
+
+        if(ischocking == true)
+        {
+            vida--;
+        }
+
+
+        if(vida <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     
