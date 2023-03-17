@@ -17,10 +17,12 @@ public class Dish : MonoBehaviour
     [SerializeField] string tagName;
     public bool IsReadyToCook = false, IsDishFinished = false;
 
+    IngredientData _ingData;
     List<string> ingNames = new List<string>();
     List<string> IngredientsNames = new List<string>();
     int counter = 0;
     bool areAllIngredients = false;
+    bool _isIngredientReady;
 
     private void Start()
     {
@@ -33,35 +35,38 @@ public class Dish : MonoBehaviour
         if(other.tag == tagName)
         {
             if (IsReadyToCook) return;
-
-            Debug.Log(other.tag);
             try
-            {                
-                var IngData = other.GetComponent<IngredientData>();
-                
-                ingNames.Add(IngData.IngName);
-                IngredientsNames = ingNames.Distinct().ToList();
-                ingNames.Clear();
-                //IngredientsNames.Add(IngData.IngName);
+            {
+                _ingData = other.GetComponent<IngredientData>();
             }
             catch
             {
-                Debug.Log("Te faltó el ");
+                Debug.Log("Algo salió mal al obtener Ingredient Data");
             }
-            if (IngredientsNames.Count >= NumberOfIngredients) 
-            { 
+
+            /*if (IsIngredientReady())
+            {
+                AddIngredientsToList();
                 CheckIngredients();
-                if (areAllIngredients)
-                {
-                    other.gameObject.SetActive(false);
-                    preDish.SetActive(false);
-                    finishedDish.SetActive(true);
-                    IsReadyToCook = true;
-                }
+            }*/
+
+            if (areAllIngredients)
+            {
+                other.gameObject.SetActive(false);
+                preDish.SetActive(false);
+                finishedDish.SetActive(true);
+                IsReadyToCook = true;
             }
         }
     }
 
+
+    public void AddIngredientsToList()
+    {
+        ingNames.Add(_ingData.IngName);
+        IngredientsNames = ingNames.Distinct().ToList();
+        ingNames.Clear();
+    }
     public void CheckIngredients()
     {        
         
@@ -82,5 +87,29 @@ public class Dish : MonoBehaviour
         }
     }
 
+
+    /*public bool IsIngredientReady()
+    {
+        if (_ingData.IsCuttable)
+        {
+            if (_ingData.IsCutted) return true;
+        }
+        if (_ingData.IsFryble)
+        {
+            if (_ingData.IsFryed) return true;
+        }
+        if (_ingData.IsCuttable && _ingData.IsFryble)
+        {
+            if (_ingData.IsCutted && _ingData.IsFryed) return true;
+        }
+
+        switch (_ingData)
+        {
+            case _ingData.IsCuttable:
+
+                break;
+        }
+        return false;
+    }*/
     
 }

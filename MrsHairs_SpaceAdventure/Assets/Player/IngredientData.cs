@@ -5,7 +5,8 @@ using UnityEngine;
 public class IngredientData : MonoBehaviour
 {
     [SerializeField] Ingredient ingredient;
-    public string IngName;
+    public string IngName, IngType;
+    public enum IngredientTypes { IsCuttable, IsFryble, IsBoth }
     public bool IsCutted, IsFryed;
 
     private void Awake()

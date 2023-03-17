@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Carne
   m_EditorClassIdentifier: 
   IngredientName: Carne
+  misTipos: 0
   cookingTime: 20
