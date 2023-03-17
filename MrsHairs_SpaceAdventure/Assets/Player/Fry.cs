@@ -8,7 +8,6 @@ public class Fry : MonoBehaviour
     [SerializeField] GameObject cookingBounds;
     [SerializeField] float cookingTime;
     Transform foodT;
-    GameObject foodBar;
     public bool IsCooking = false, IsCoolDownOn = false;
     ProgressBar progressBar;
     float secondTimer = 0f;
@@ -21,7 +20,7 @@ public class Fry : MonoBehaviour
         {
             return;
         }
-        CookingCounter(cookingTime);
+        CookingCounter(_dishData.TotalCookingTime);
     }
 
     private void OnTriggerEnter(Collider other)

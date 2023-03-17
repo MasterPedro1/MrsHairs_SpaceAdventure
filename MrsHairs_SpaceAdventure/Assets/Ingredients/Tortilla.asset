@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Tortilla
   m_EditorClassIdentifier: 
   IngredientName: Tortilla
+  isCuttable: 0
+  isFryble: 1
   cookingTime: 5

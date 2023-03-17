@@ -6,6 +6,7 @@ public class Cuttable : MonoBehaviour
 {
     [SerializeField] private GameObject normalGameObject, cuttedGameObject;
     [SerializeField] private float itemDurability;
+    [SerializeField] IngredientData ingData;
     float currentDurability, damageValue = 1;
     private void OnTriggerEnter(Collider other)
     {        
@@ -23,6 +24,7 @@ public class Cuttable : MonoBehaviour
         {
             normalGameObject.SetActive(false);
             cuttedGameObject.SetActive(true);
+            ingData.IsCutted = true;
         }
         Debug.Log(itemDurability);
     }
