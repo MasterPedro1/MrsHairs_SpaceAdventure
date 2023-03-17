@@ -10,7 +10,7 @@ public class OrderManager : MonoBehaviour
     public List<Order> orderList = new List<Order>();
 
     [Header("Order details")]
-    public float _orderTimeLimit = 30;
+    public float ordersTimeLimit = 30;
     public int minDishQuantity = 2, maxDishQuantity = 4;
     public List<Dish> possibleDishes = new List<Dish>();
     
@@ -57,9 +57,19 @@ public class OrderManager : MonoBehaviour
             nextOrder.dishesNeeded.Add(nextDeliverOrder);
             numberOfNextDishes--;
         }
+        nextOrder.timeLimit = ordersTimeLimit;
         return nextOrder;
     }
-
+    IEnumerator OrderTimer()
+    {
+        yield return new WaitForEndOfFrame();
+        foreach(Order activeOrder in orderList)
+        {
+            activeOrder.timeLimit -= Time.deltaTime;
+            if (activeOrder.timeLimit <= 0) activeOrder.timeLimit = ordersTimeLimit;
+        }
+        StartCoroutine(OrderTimer());
+    }
     private void Start()
     {
         StartCoroutine(PlaceOrder());
@@ -72,6 +82,7 @@ public class OrderManager : MonoBehaviour
 [System.Serializable]
 public class Order
 {
+    public float timeLimit;
     public List<OrderDishes> dishesNeeded = new List<OrderDishes>();
 }
 
