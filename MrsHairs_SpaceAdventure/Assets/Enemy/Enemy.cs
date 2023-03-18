@@ -7,12 +7,11 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public Transform target;
-    public Shoot shoot;
     public Slider vidaSlider;
     public float vida = 100;
     public float slowingRadios = 4;
     public bool ischocking = false;
-    
+
 
     [SerializeField] private Vector3 velocity;
     private Vector3 steering;
@@ -20,16 +19,30 @@ public class Enemy : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        
-    }
-
     void Update()
     {
+
         vidaSlider.value = vida;
 
+        if (vida <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+        Arrival();
+
+    }
+
+    public void QuitarVida()
+    {
+        vida--;
+    }
+
+    public void Arrival()
+    {
+
         this.transform.LookAt(Camera.main.transform);
+
 
         Vector3 desvel = (target.position - transform.position);
         float distance = desvel.magnitude;
@@ -46,23 +59,8 @@ public class Enemy : MonoBehaviour
         velocity += steering;
         transform.position += velocity * Time.deltaTime / speed;
 
-        if (shoot.hit.collider.CompareTag("Enemy") && shoot.hit.collider !=null)
-        {
-            ischocking = true;
-        }
-        else ischocking = false;
 
-        if(ischocking == true)
-        {
-            vida--;
-        }
-
-
-        if(vida <= 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
-    
+
 }

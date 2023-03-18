@@ -52,7 +52,7 @@ public class InteractWithObjects : MonoBehaviour
         {
             sh = objectGrabbable.gameObject.GetComponent<Shoot>();
             
-            //Debug.Log("Esta Disparando");
+           
             sh.Disparar();
         }
       
