@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15129,7 +15129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &280346120
 Transform:
   m_ObjectHideFlags: 0
@@ -34657,12 +34657,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &404860593 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1,
-    type: 3}
-  m_PrefabInstance: {fileID: 550197574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -54943,6 +54937,9 @@ MonoBehaviour:
   ingredient: {fileID: 11400000, guid: b184b7b205f804f4abcbd88656a3cf43, type: 2}
   IngName: 
   IngType: 
+  IsCuttable: 0
+  IsFryble: 0
+  IsBoth: 0
   IsCutted: 0
   IsFryed: 0
 --- !u!65 &711510344
@@ -99858,18 +99855,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56270074dd9550c4f8c4eb3733354f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balaPrefab: {fileID: 6170006910687242444, guid: bacba2deea0f18d4ea25441570fb673f,
-    type: 3}
-  puntoDisparo: {fileID: 553506314}
-  Boom: {fileID: 404860593}
-  showRate: 0.5
-  force: 1500
-  enemies:
-    serializedVersion: 2
-    m_Bits: 0
-  isAEnemy: 0
   rayCastOrigin: {fileID: 0}
   rayCastMaxDistance: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1278404169
 GameObject:
   m_ObjectHideFlags: 0
@@ -99904,10 +99894,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3893294199639930361}
-  shoot: {fileID: 0}
   vidaSlider: {fileID: 0}
   vida: 100
   slowingRadios: 4
+  ischocking: 0
   velocity: {x: 0, y: 0, z: 0}
   speed: 2
 --- !u!54 &1278404171
@@ -100500,6 +100490,9 @@ MonoBehaviour:
   ingredient: {fileID: 11400000, guid: 254f1890aab97224fbb82dcd98182a8e, type: 2}
   IngName: 
   IngType: 
+  IsCuttable: 0
+  IsFryble: 0
+  IsBoth: 0
   IsCutted: 0
   IsFryed: 0
 --- !u!1 &1370726512

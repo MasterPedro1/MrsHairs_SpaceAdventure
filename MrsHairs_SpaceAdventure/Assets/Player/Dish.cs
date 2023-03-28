@@ -44,11 +44,11 @@ public class Dish : MonoBehaviour
                 Debug.Log("Algo salió mal al obtener Ingredient Data");
             }
 
-            /*if (IsIngredientReady())
+            if (IsIngredientReady())
             {
                 AddIngredientsToList();
                 CheckIngredients();
-            }*/
+            }
 
             if (areAllIngredients)
             {
@@ -88,7 +88,7 @@ public class Dish : MonoBehaviour
     }
 
 
-    /*public bool IsIngredientReady()
+    public bool IsIngredientReady()
     {
         if (_ingData.IsCuttable)
         {
@@ -103,13 +103,8 @@ public class Dish : MonoBehaviour
             if (_ingData.IsCutted && _ingData.IsFryed) return true;
         }
 
-        switch (_ingData)
-        {
-            case _ingData.IsCuttable:
-
-                break;
-        }
+       
         return false;
-    }*/
+    }
     
 }

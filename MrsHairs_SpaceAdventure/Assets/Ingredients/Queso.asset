@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Queso
   m_EditorClassIdentifier: 
   IngredientName: Queso
-  isCuttable: 1
-  isFryble: 0
   cookingTime: 10
+  IsCuttable: 1
+  IsFryble: 0
+  IsBoth: 0
