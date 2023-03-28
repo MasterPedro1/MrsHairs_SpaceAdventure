@@ -12,9 +12,15 @@ public class ProgressBar : MonoBehaviour
         //progressSlider = GetComponent<Slider>();
         progressBarGO.SetActive(false);
     }
-    public void ShowProgress(float maxValue, float progress)
+
+    public void ShowProgress(float progress)
+    {
+        progressSlider.value = progress;
+    }
+
+    public void SetMaxValue(float maxValue)
     {
         progressSlider.maxValue = maxValue;
-        progressSlider.value = progress;
+        progressSlider.value = maxValue;
     }
 }

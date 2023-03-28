@@ -75,7 +75,8 @@ public class Fry : MonoBehaviour
     private void CookingCounter(float maxTime)
     {        
         secondTimer += Time.deltaTime;
-        progressBar.ShowProgress(cookingTime, secondTimer);
+        progressBar.SetMaxValue(cookingTime);
+        progressBar.ShowProgress(secondTimer);
         if (secondTimer >= maxTime)
         {
             secondTimer = 0f;

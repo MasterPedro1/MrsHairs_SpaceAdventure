@@ -1,31 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cuttable : MonoBehaviour
 {
     [SerializeField] private GameObject normalGameObject, cuttedGameObject;
-    [SerializeField] private float itemDurability;
     [SerializeField] IngredientData ingData;
-    float currentDurability, damageValue = 1;
+    [SerializeField] ProgressBar progressBar;
+    public int ItemDurability;
+
+    int _damageValue = 1;
     private void OnTriggerEnter(Collider other)
     {        
         if (!other.CompareTag("Knife"))
         {
             return;            
         }
-        if (itemDurability > 0)
+
+        progressBar.progressBarGO.SetActive(true);
+        progressBar.SetMaxValue(ItemDurability);
+        progressBar.ShowProgress(ItemDurability);
+
+        if (ItemDurability == 1) { }
+        if (ItemDurability > 0)
         {
             normalGameObject.SetActive(true);
             cuttedGameObject.SetActive(false);
-            itemDurability -= damageValue;
+            ItemDurability -= _damageValue;
+            progressBar.ShowProgress(ItemDurability);
         }
-        if(itemDurability <= 0)
+        if(ItemDurability <= 0)
         {
             normalGameObject.SetActive(false);
             cuttedGameObject.SetActive(true);
             ingData.IsCutted = true;
+            progressBar.progressBarGO.SetActive(false);
         }
-        Debug.Log(itemDurability);
+        //Debug.Log(ItemDurability);
     }
 }

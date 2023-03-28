@@ -5,17 +5,22 @@ using UnityEngine;
 public class IngredientData : MonoBehaviour
 {
     [SerializeField] Ingredient ingredient;
-    public string IngName, IngType;
-    public bool IsCuttable, IsFryble, IsBoth;
+    public string IngName;
     public bool IsCutted, IsFryed;
+    public enum IngredientTypes
+    { 
+        IsCuttable, IsFryble, IsBoth 
+    }
+    public IngredientTypes IngTypes;
 
+    public enum IngredientCookingState
+    {
+        Azul, Rojo, TerminoMedio, TresCuartos, BienCocido
+    }
+    public IngredientCookingState IngCookingState;
     private void Awake()
     {
         IngName = ingredient.IngredientName;
-        IsCuttable = ingredient.IsCuttable;
-        IsFryble = ingredient.IsFryble;
-        IsBoth = ingredient.IsBoth;
-
         IsCutted = false;
         IsFryed = false;    
     }

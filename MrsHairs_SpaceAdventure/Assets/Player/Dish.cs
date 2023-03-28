@@ -90,21 +90,18 @@ public class Dish : MonoBehaviour
 
     public bool IsIngredientReady()
     {
-        if (_ingData.IsCuttable)
+        switch (_ingData.IngTypes)
         {
-            if (_ingData.IsCutted) return true;
+            case IngredientData.IngredientTypes.IsCuttable:
+                if (_ingData.IsCutted) return true;
+                break;
+            case IngredientData.IngredientTypes.IsFryble:
+                if (_ingData.IsFryed) return true;
+                break;
+            case IngredientData.IngredientTypes.IsBoth:
+                if (_ingData.IsCutted && _ingData.IsFryed) return true;
+                break;
         }
-        if (_ingData.IsFryble)
-        {
-            if (_ingData.IsFryed) return true;
-        }
-        if (_ingData.IsCuttable && _ingData.IsFryble)
-        {
-            if (_ingData.IsCutted && _ingData.IsFryed) return true;
-        }
-
-       
         return false;
-    }
-    
+    }    
 }
