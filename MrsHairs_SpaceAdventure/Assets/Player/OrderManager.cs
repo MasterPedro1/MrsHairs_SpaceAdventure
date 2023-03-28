@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class OrderManager : MonoBehaviour
 {
-    [Header("Orders to appear")]
+    [Header("Managing values")]
+    public bool createOrders = true;
+
+    [Space(2.5f), Header("Orders to appear")]
     public int orderListLimit = 10;
     public float orderAdditionTimer = 7.5f;
     public List<Order> orderList = new List<Order>();
 
-    [Header("Order details")]
+    [Space(2.5f), Header("Order details")]
     public float ordersTimeLimit = 30;
     public int minDishQuantity = 2, maxDishQuantity = 4;
     public List<Dish> possibleDishes = new List<Dish>();
-    
+
     IEnumerator PlaceOrder()
     {
         yield return new WaitForSeconds(orderAdditionTimer);
 
-        if (orderList.Count < orderListLimit)
+        if (createOrders && orderList.Count < orderListLimit)
         {
             Order newOrder = CreateOrder();
             orderList.Add(newOrder);
