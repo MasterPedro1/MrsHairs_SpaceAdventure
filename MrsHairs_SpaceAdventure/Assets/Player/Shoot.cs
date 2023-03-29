@@ -11,6 +11,8 @@ public class Shoot : MonoBehaviour
     [SerializeField] Transform rayCastOrigin;
     [SerializeField] float rayCastMaxDistance;
     [SerializeField] LayerMask enemyLayer;
+
+    public GameObject lightining;
    
     
 
@@ -24,7 +26,7 @@ public class Shoot : MonoBehaviour
 
         Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.transform.forward * rayCastMaxDistance, Color.blue);
 
-        
+        lightining.gameObject.SetActive(true);
 
         
     }
