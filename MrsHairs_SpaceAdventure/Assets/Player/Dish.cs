@@ -95,9 +95,36 @@ public class Dish : MonoBehaviour
             case IngredientData.IngredientTypes.IsCuttable:
                 if (_ingData.IsCutted) return true;
                 break;
+
             case IngredientData.IngredientTypes.IsFryble:
-                if (_ingData.IsFryed) return true;
+                if (_ingData.IsFryed)
+                {
+                    /*switch(_ingData.IngCookingState)
+                    {
+                        case IngredientData.IngredientCookingState.Azul:
+
+                            break;
+
+                        case IngredientData.IngredientCookingState.Rojo:
+
+                            break;
+
+                        case IngredientData.IngredientCookingState.TerminoMedio:
+
+                            break;
+
+                        case IngredientData.IngredientCookingState.TresCuartos:
+
+                            break;
+
+                        case IngredientData.IngredientCookingState.BienCocido:
+
+                            break;
+                    }*/
+                    return true;
+                }
                 break;
+
             case IngredientData.IngredientTypes.IsBoth:
                 if (_ingData.IsCutted && _ingData.IsFryed) return true;
                 break;

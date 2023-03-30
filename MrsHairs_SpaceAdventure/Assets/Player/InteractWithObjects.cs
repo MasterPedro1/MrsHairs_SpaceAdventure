@@ -57,9 +57,13 @@ public class InteractWithObjects : MonoBehaviour
         }
         else
         {
-            sh = objectGrabbable.gameObject.GetComponent<Shoot>();
+            try
+            {
+                sh = objectGrabbable.gameObject.GetComponent<Shoot>();
 
-            sh.lightining.gameObject.SetActive(false);
+                sh.lightining.gameObject.SetActive(false);
+            }
+            catch { }
         }
      
     }
