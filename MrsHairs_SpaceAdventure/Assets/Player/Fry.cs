@@ -54,13 +54,19 @@ public class Fry : MonoBehaviour
             
         }
 
-        if (other.tag == "Ingredient")
+        if (other.CompareTag("Ingredient"))
         {
             if (!IsCoolDownOn)
             {
                 try
                 {
                     var ingDta = other.GetComponent<IngredientData>();
+                    switch (ingDta.IngTypes)
+                    {
+                        case IngredientData.IngredientTypes.IsFryble:
+                            break;
+                    }
+
                     ingDta.IsFryed = true;
                 }
                 catch 
@@ -70,6 +76,8 @@ public class Fry : MonoBehaviour
             }
         }
     }
+
+
 
 
     private void CookingCounter(float maxTime)
