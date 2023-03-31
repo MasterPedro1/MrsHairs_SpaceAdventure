@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OrderManager : MonoBehaviour
 {
-    [Header("Managing values")]
+    [Header("Manager variables")]
     public bool createOrders = true;
+    public List<UIOrder> visualOrders = new List<UIOrder>();
 
     [Space(2.5f), Header("Orders to appear")]
-    public int orderListLimit = 10;
+    public int orderListLimit = 5;
     public float orderAdditionTimer = 7.5f;
     public List<Order> orderList = new List<Order>();
 
@@ -16,6 +18,22 @@ public class OrderManager : MonoBehaviour
     public float ordersTimeLimit = 30;
     public int minDishQuantity = 2, maxDishQuantity = 4;
     public List<Dish> possibleDishes = new List<Dish>();
+
+    private void Awake()
+    {
+        foreach(UIOrder visualOrder in transform.GetComponentsInChildren<UIOrder>())
+        {
+            visualOrders.Add(visualOrder);
+        }
+    }
+
+    private void ShowOrders()
+    {
+        for(int i = 0; i < orderList.Count; i++)
+        {
+            //visualOrders[i].detailsText = orderList[i].
+        }
+    }
 
     IEnumerator PlaceOrder()
     {
@@ -25,12 +43,12 @@ public class OrderManager : MonoBehaviour
         {
             Order newOrder = CreateOrder();
             orderList.Add(newOrder);
-            print("New Order:");
+            string details = "";
             for(int i = 0; i < newOrder.dishesNeeded.Count; i++)
             {
-                print(newOrder.dishesNeeded[i].dishQuantity + " " + newOrder.dishesNeeded[i].dishToGive.dishName);
-
+                details+=newOrder.dishesNeeded[i].dishQuantity + " " + newOrder.dishesNeeded[i].dishToGive.dishName + "\n";
             }
+            visualOrders[orderList.IndexOf(newOrder)].detailsText.text = details;
         }
         StartCoroutine(PlaceOrder());
     }
@@ -45,7 +63,7 @@ public class OrderManager : MonoBehaviour
         // Create a new order to add it to the list
         Order nextOrder = new Order();
         // Amount of different dishes used for this order
-        int numberOfNextDishes = Random.Range(1, dishes.Count);
+        int numberOfNextDishes = Random.Range(1, dishes.Count + 1);
         while(numberOfNextDishes > 0)
         {
             // Choose the dish to add to the order
