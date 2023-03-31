@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Carne
   m_EditorClassIdentifier: 
   IngredientName: Carne
-  cookingTime: 20
+  cookingTime: 13
   IsCuttable: 0
-  IsFryble: 0
+  IsFryble: 1
   IsBoth: 0
