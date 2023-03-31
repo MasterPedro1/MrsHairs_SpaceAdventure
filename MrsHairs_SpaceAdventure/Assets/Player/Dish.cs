@@ -32,17 +32,12 @@ public class Dish : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == tagName)
+        if(other.CompareTag(tagName))
         {
             if (IsReadyToCook) return;
-            try
-            {
-                _ingData = other.GetComponent<IngredientData>();
-            }
-            catch
-            {
-                Debug.Log("Algo salió mal al obtener Ingredient Data");
-            }
+
+            try { _ingData = other.GetComponent<IngredientData>(); }
+            catch { Debug.Log("Algo salió mal al obtener Ingredient Data"); }
 
             if (IsIngredientReady())
             {
@@ -67,6 +62,8 @@ public class Dish : MonoBehaviour
         IngredientsNames = ingNames.Distinct().ToList();
         ingNames.Clear();
     }
+
+
     public void CheckIngredients()
     {        
         
@@ -97,32 +94,7 @@ public class Dish : MonoBehaviour
                 break;
 
             case IngredientData.IngredientTypes.IsFryble:
-                if (_ingData.IsFryed)
-                {
-                    /*switch(_ingData.IngCookingState)
-                    {
-                        case IngredientData.IngredientCookingState.Azul:
-
-                            break;
-
-                        case IngredientData.IngredientCookingState.Rojo:
-
-                            break;
-
-                        case IngredientData.IngredientCookingState.TerminoMedio:
-
-                            break;
-
-                        case IngredientData.IngredientCookingState.TresCuartos:
-
-                            break;
-
-                        case IngredientData.IngredientCookingState.BienCocido:
-
-                            break;
-                    }*/
-                    return true;
-                }
+                if (_ingData.IsFryed) { return true; }
                 break;
 
             case IngredientData.IngredientTypes.IsBoth:

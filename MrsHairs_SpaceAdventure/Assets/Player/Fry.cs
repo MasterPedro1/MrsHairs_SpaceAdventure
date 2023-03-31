@@ -7,12 +7,14 @@ public class Fry : MonoBehaviour
 {
     [SerializeField] GameObject cookingBounds;
     [SerializeField] float cookingTime;
-    Transform foodT;
+    [SerializeField] string meatName;
     public bool IsCooking = false, IsCoolDownOn = false;
-    ProgressBar progressBar;
-    float secondTimer = 0f;
 
+    Transform _foodT;
+    ProgressBar _progressBar;
+    float _secondTimer = 0f, _currentCookingState, _percentageMeat;
     Dish _dishData;
+    IngredientData _ingDta;
 
     private void Update()
     {
@@ -20,7 +22,7 @@ public class Fry : MonoBehaviour
         {
             return;
         }
-        CookingCounter(_dishData.TotalCookingTime);
+        CookingCounter(cookingTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,28 +32,22 @@ public class Fry : MonoBehaviour
             try
             {
                 _dishData = other.GetComponent<Dish>();
-                if(!_dishData.IsReadyToCook)
-                {
-                    return;
-                }
+                if(!_dishData.IsReadyToCook) { return; }
 
                 if (!IsCoolDownOn)
                 {
-                    //other.gameObject.transform.SetParent(this.transform, true);   
-                    other.gameObject.TryGetComponent(out progressBar);
+                    //other.gameObject.transform.SetParent(this.transform, true);
+                    cookingTime = _dishData.TotalCookingTime;
+                    other.gameObject.TryGetComponent(out _progressBar);
                     cookingBounds.SetActive(true);
-                    foodT = other.transform;
-                    progressBar.progressBarGO.SetActive(true);
-                    foodT.transform.eulerAngles = new Vector3(0f, foodT.rotation.y, 0f);
+                    _foodT = other.transform;
+                    _progressBar.progressBarGO.SetActive(true);
+                    _foodT.transform.eulerAngles = new Vector3(0f, _foodT.rotation.y, 0f);
                     IsCooking = true;
                     StartCoroutine(Cooking(_dishData.TotalCookingTime));
                 }
             }
-            catch
-            {
-                Debug.Log("Falta el componente Dish");
-            }                   
-            
+            catch  { Debug.Log("Falta el componente Dish"); }                  
         }
 
         if (other.CompareTag("Ingredient"))
@@ -60,51 +56,102 @@ public class Fry : MonoBehaviour
             {
                 try
                 {
-                    var ingDta = other.GetComponent<IngredientData>();
-                    switch (ingDta.IngTypes)
-                    {
-                        case IngredientData.IngredientTypes.IsFryble:
-                            break;
-                    }
+                    _ingDta = other.GetComponent<IngredientData>();
+                    _progressBar = other.GetComponent<ProgressBar>();
+                    cookingTime = _ingDta.CookingTime;
+                    if (_ingDta.IsFryed) return;
 
-                    ingDta.IsFryed = true;
+                    if (_ingDta.IngName == meatName)
+                    {
+                        Debug.Log("Cocina carne");
+                        _progressBar.progressBarGO.SetActive(true);
+                        IsCooking = true;
+                        
+                    }
+                    _ingDta.IsFryed = true;
                 }
-                catch 
-                {
-                    
-                }
+                catch { return; }
             }
         }
     }
 
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ingredient"))
+        {
+            try
+            {
+                CheckMeatProgress();
+                CheckMeatState();
+                
+            }
+            catch { Debug.Log("No es carne"); }
+            IsCooking = false;
+            StartCoroutine(CoolDown(3f));
+        }
+    }
 
 
     private void CookingCounter(float maxTime)
     {        
-        secondTimer += Time.deltaTime;
-        progressBar.SetMaxValue(cookingTime);
-        progressBar.ShowProgress(secondTimer);
-        if (secondTimer >= maxTime)
+        _secondTimer += Time.deltaTime;
+        _progressBar.SetMaxValue(cookingTime);
+        _progressBar.ShowProgress(_secondTimer);
+        if (_secondTimer >= maxTime)
         {
-            secondTimer = 0f;
+            _secondTimer = 0f;
         }
-        Debug.Log(secondTimer.ToString());
+        //Debug.Log(_secondTimer.ToString());
+    }
+
+
+    private void CheckMeatProgress()
+    {
+        float maxCookingTime = _ingDta.CookingTime;
+        _currentCookingState = _secondTimer;
+        _percentageMeat = (_currentCookingState * 100f) / maxCookingTime;
+        Debug.Log(_percentageMeat);
+    }
+
+
+    private void CheckMeatState()
+    {
+        if (_percentageMeat <= 0 && _percentageMeat < 25)
+        {
+            _ingDta.IngCookingState = IngredientData.IngredientCookingState.Azul;
+        }
+        if (_percentageMeat > 25 && _percentageMeat <= 40)
+        {
+            _ingDta.IngCookingState = IngredientData.IngredientCookingState.Rojo;
+        }
+        if (_percentageMeat > 40 && _percentageMeat <= 60)
+        {
+            _ingDta.IngCookingState = IngredientData.IngredientCookingState.TerminoMedio;
+        }
+        if (_percentageMeat > 60 && _percentageMeat <= 90)
+        {
+            _ingDta.IngCookingState = IngredientData.IngredientCookingState.TresCuartos;
+        }
+        if (_percentageMeat > 90)
+        {
+            _ingDta.IngCookingState = IngredientData.IngredientCookingState.BienCocido;
+        }
     }
 
 
     private IEnumerator Cooking(float time)
     {        
-            foodT.gameObject.transform.SetParent(this.transform, true);
-            foodT.position = cookingBounds.transform.position;
+            _foodT.gameObject.transform.SetParent(this.transform, true);
+            _foodT.position = cookingBounds.transform.position;
             
         yield return new WaitForSeconds(time);
             cookingBounds.SetActive(false);
             IsCooking = false;
            _dishData.IsDishFinished = true;
-            foodT.transform.eulerAngles = new Vector3(foodT.rotation.x, foodT.rotation.y, foodT.rotation.z);
-            progressBar.progressBarGO.SetActive(false);
-            foodT.gameObject.transform.SetParent(null);
+            _foodT.transform.eulerAngles = new Vector3(_foodT.rotation.x, _foodT.rotation.y, _foodT.rotation.z);
+            _progressBar.progressBarGO.SetActive(false);
+            _foodT.gameObject.transform.SetParent(null);
             StartCoroutine(CoolDown(3f));
     }
 

@@ -6,6 +6,7 @@ public class IngredientData : MonoBehaviour
 {
     [SerializeField] Ingredient ingredient;
     public string IngName;
+    public float CookingTime;
     public bool IsCutted, IsFryed;
     public enum IngredientTypes
     { 
@@ -21,6 +22,7 @@ public class IngredientData : MonoBehaviour
     private void Awake()
     {
         IngName = ingredient.IngredientName;
+        CookingTime = ingredient.cookingTime;
         IsCutted = false;
         IsFryed = false;    
     }
