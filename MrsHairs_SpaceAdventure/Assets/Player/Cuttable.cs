@@ -37,6 +37,6 @@ public class Cuttable : MonoBehaviour
             ingData.IsCutted = true;
             progressBar.progressBarGO.SetActive(false);
         }
-        //Debug.Log(ItemDurability);
+        Debug.Log(ItemDurability);
     }
 }
