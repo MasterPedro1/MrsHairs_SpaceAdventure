@@ -11,6 +11,7 @@ public class Dish : MonoBehaviour
     public int NumberOfIngredients;
     public float TotalCookingTime;
     public List<Ingredient> Ingredients = new List<Ingredient>();
+    [SerializeField] string indFState;
 
     [Header("Dish")]
     [SerializeField] GameObject preDish, finishedDish;
@@ -93,14 +94,28 @@ public class Dish : MonoBehaviour
                 if (_ingData.IsCutted) return true;
                 break;
 
-            case IngredientData.IngredientTypes.IsFryble:
+            case IngredientData.IngredientTypes.IsFryable:
+                if (_ingData.IsMeat)
+                {
+                    if (indFState != _ingData.IngCookingState.ToString())
+                    {
+                        return false;
+                    }
+                }
                 if (_ingData.IsFryed) { return true; }
                 break;
 
             case IngredientData.IngredientTypes.IsBoth:
+                if (_ingData.IsMeat)
+                {
+                    if (indFState != _ingData.IngCookingState.ToString())
+                    {
+                        return false;
+                    }
+                }
                 if (_ingData.IsCutted && _ingData.IsFryed) return true;
                 break;
         }
         return false;
-    }    
+    }
 }

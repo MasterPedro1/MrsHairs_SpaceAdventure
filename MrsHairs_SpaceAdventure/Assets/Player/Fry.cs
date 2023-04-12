@@ -59,11 +59,10 @@ public class Fry : MonoBehaviour
                     _ingDta = other.GetComponent<IngredientData>();
                     _progressBar = other.GetComponent<ProgressBar>();
                     cookingTime = _ingDta.CookingTime;
-                    if (_ingDta.IsFryed) return;
 
-                    if (_ingDta.IngName == meatName)
-                    {
-                        Debug.Log("Cocina carne");
+                    if (_ingDta.IsFryed) return;
+                    if (_ingDta.IsMeat)
+                    {                        
                         _progressBar.progressBarGO.SetActive(true);
                         IsCooking = true;
                         
@@ -82,16 +81,23 @@ public class Fry : MonoBehaviour
         {
             try
             {
-                CheckMeatProgress();
-                CheckMeatState();
-                
-            }
-            catch { Debug.Log("No es carne"); }
-            IsCooking = false;
-            StartCoroutine(CoolDown(3f));
+                if (_ingDta.IsFryed) return;
+
+                if (_ingDta.IsMeat) FinishMeat();
+                IsCooking = false;
+                StartCoroutine(CoolDown(3f));
+            } catch { }
+            
         }
     }
 
+
+    private void FinishMeat()
+    {
+        CheckMeatProgress();
+        CheckMeatState();
+        Debug.Log(_ingDta.IngCookingState.ToString());
+    }
 
     private void CookingCounter(float maxTime)
     {        
@@ -100,6 +106,8 @@ public class Fry : MonoBehaviour
         _progressBar.ShowProgress(_secondTimer);
         if (_secondTimer >= maxTime)
         {
+            IsCooking = false;
+            if (_ingDta.IsMeat) FinishMeat();
             _secondTimer = 0f;
         }
         //Debug.Log(_secondTimer.ToString());
