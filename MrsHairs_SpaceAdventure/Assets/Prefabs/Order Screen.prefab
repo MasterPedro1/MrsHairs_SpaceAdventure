@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7139331567722238487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,10 +1573,7 @@ MonoBehaviour:
   ordersTimeLimit: 10
   minDishQuantity: 2
   maxDishQuantity: 4
-  possibleDishes:
-  - {fileID: 322359885871412010, guid: 03547042e8929d148bf9f16b078157af, type: 3}
-  - {fileID: 1845278544976837134, guid: de05eeae8041e3b439f2257ad2237ebe, type: 3}
-  - {fileID: 4361168852172850996, guid: dad922cbbb420a84bb39c1f08339b9c3, type: 3}
+  possibleDishes: []
 --- !u!1 &7139331567748309088
 GameObject:
   m_ObjectHideFlags: 0
