@@ -46,8 +46,10 @@ public class InteractWithObjects : MonoBehaviour
         {
             objectGrabbable.Drop();
             objectGrabbable= null;
-            
-            sh.lightining.gameObject.SetActive(false);
+
+            try { sh.lightining.gameObject.SetActive(false); }
+            catch { }
+
         }
 
         if (Input.GetMouseButton(1) && objectGrabbable != null)
