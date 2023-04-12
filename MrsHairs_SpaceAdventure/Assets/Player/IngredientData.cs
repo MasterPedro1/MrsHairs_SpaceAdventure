@@ -6,19 +6,25 @@ public class IngredientData : MonoBehaviour
 {
     [SerializeField] Ingredient ingredient;
     public string IngName;
-    public float CookingTime;
-    public bool IsCutted, IsFryed;
+    public bool IsMeat;
+
     public enum IngredientTypes
-    { 
-        IsCuttable, IsFryble, IsBoth 
+    {
+        IsCuttable, IsFryable, IsBoth
     }
     public IngredientTypes IngTypes;
+    public bool IsCutted;
 
+    [Header("Fryable Settings")]
+    public bool IsFryed;
+    public float CookingTime;
     public enum IngredientCookingState
     {
         Azul, Rojo, TerminoMedio, TresCuartos, BienCocido
     }
     public IngredientCookingState IngCookingState;
+
+
     private void Awake()
     {
         IngName = ingredient.IngredientName;
