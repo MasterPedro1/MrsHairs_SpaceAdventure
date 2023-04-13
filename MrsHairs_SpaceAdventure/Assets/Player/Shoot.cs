@@ -20,9 +20,11 @@ public class Shoot : MonoBehaviour
 
         if (Physics.Raycast(rayCastOrigin.position, rayCastOrigin.transform.forward, out hit, rayCastMaxDistance))
         {
-            if(hit.transform.tag == "Enemy")
-            isHitting = true;
-
+            if (hit.transform.tag == "Enemy")
+            {
+                hit.transform.GetComponent<Enemy>().QuitarVida();
+                hit.transform.GetComponent<Enemy>().Slider();
+            }
         }
         else isHitting = false;
 

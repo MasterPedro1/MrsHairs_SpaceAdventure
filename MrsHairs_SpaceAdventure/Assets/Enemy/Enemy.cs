@@ -6,17 +6,18 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform target;
+    public Transform[] target;
     public Slider vidaSlider;
+    public GameObject slider;
+    public GameObject Letrero;
     public float vida = 100;
     public float slowingRadios = 4;
     public Shoot sh;
 
-    [SerializeField] private Vector3 velocity;
-    private Vector3 steering;
+    
     public float speed;
     public float speedNormal;
-
+    private int currentPoint = 0;
 
     private void Start()
     {
@@ -35,13 +36,7 @@ public class Enemy : MonoBehaviour
 
         Arrival();
 
-        if (sh.isHitting == true)
-        {
-            QuitarVida();
-            Slowing();
-        }
-        else vida += currentvida;
-        speed = speedNormal;
+       
     }
 
     public void QuitarVida()
@@ -49,39 +44,40 @@ public class Enemy : MonoBehaviour
         vida--;
     }
 
-    public void Slowing()
+    public void Slider()
     {
-        speed = 7;
+        slider.gameObject.SetActive(true);
     }
 
-    public void Rapiding()
-    {
-        speed = 4;
-    }
 
     public void Arrival()
     {
 
         this.transform.LookAt(Camera.main.transform);
 
+        Vector3 direction = target[currentPoint].position - transform.position;
 
-        Vector3 desvel = (target.position - transform.position);
-        float distance = desvel.magnitude;
+        float distance = direction.magnitude;
 
-        if (distance < slowingRadios)
+        if (distance < 0.1f)
         {
-            steering = desvel - velocity * (distance / slowingRadios);
+            currentPoint++;
+            if (currentPoint >= target.Length)
+            {
+                currentPoint--;
+                speed = 0;
+            }
         }
-        else
-        {
-            steering = desvel - velocity;
-        }
-        steering = desvel - velocity;
-        velocity += steering;
-        transform.position += velocity * Time.deltaTime / speed;
 
+        direction.Normalize();
+
+        transform.position += direction * speed * Time.deltaTime;
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
 
 }
