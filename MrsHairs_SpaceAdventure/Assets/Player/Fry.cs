@@ -107,7 +107,7 @@ public class Fry : MonoBehaviour
         if (_secondTimer >= maxTime)
         {
             IsCooking = false;
-            if (_ingDta.IsMeat) FinishMeat();
+            try { if (_ingDta.IsMeat) { FinishMeat(); } } catch { }
             _secondTimer = 0f;
         }
         //Debug.Log(_secondTimer.ToString());
