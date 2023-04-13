@@ -33,6 +33,7 @@ public class Fry : MonoBehaviour
             {
                 _dishData = other.GetComponent<Dish>();
                 if(!_dishData.IsReadyToCook) { return; }
+                if (_dishData.IsDishFinished) { return; }
 
                 if (!IsCoolDownOn)
                 {

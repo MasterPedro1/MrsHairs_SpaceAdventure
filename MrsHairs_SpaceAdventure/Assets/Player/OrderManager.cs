@@ -38,6 +38,7 @@ public class OrderManager : MonoBehaviour
     public void CheckDelivery(Dish deliveredDish)
     {
         print($"{deliveredDish.DishName} has been delivered");
+        StopAllCoroutines();
         RemoveOrder(orderList[0]);
     }
 
