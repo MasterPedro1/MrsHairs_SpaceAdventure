@@ -35,12 +35,10 @@ public class OrderManager : MonoBehaviour
         StartCoroutine(OrderTimer());
     }
 
-    private void ShowOrders()
+    public void CheckDelivery(Dish deliveredDish)
     {
-        for(int i = 0; i < orderList.Count; i++)
-        {
-            //visualOrders[i].detailsText = orderList[i].
-        }
+        print($"{deliveredDish.DishName} has been delivered");
+        RemoveOrder(orderList[0]);
     }
 
     IEnumerator PlaceOrder()
