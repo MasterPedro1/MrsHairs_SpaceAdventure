@@ -13,7 +13,7 @@ public class DeliveryController : MonoBehaviour
             Dish dishToCheck = collision.gameObject.GetComponent<Dish>();
             if (dishToCheck.IsDishFinished)
             {
-                _orderManager.CheckDelivery(dishToCheck);
+                //_orderManager.CheckDelivery(dishToCheck);
             }
         }
     }

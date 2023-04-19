@@ -22,6 +22,8 @@ public class OrderManager : MonoBehaviour
     public int minDishQuantity = 2, maxDishQuantity = 4;
     public List<Dish> possibleDishes = new List<Dish>();
 
+    private List<int> closedOrderIndx = new List<int>();
+
     private void Awake()
     {
         foreach(UIOrder visualOrder in transform.GetComponentsInChildren<UIOrder>())
@@ -35,10 +37,17 @@ public class OrderManager : MonoBehaviour
         StartCoroutine(OrderTimer());
     }
 
-    public void CheckDelivery(Dish deliveredDish)
+    public void CheckDelivery(Plate orderDelivered)
     {
-        print($"{deliveredDish.DishName} has been delivered");
-        RemoveOrder(orderList[0]);
+        foreach(Order order in orderList)
+        {
+            foreach()
+        }
+        foreach(string dish in orderDelivered.dishOnPlate.Keys)
+        {
+
+        }
+        //RemoveOrder(orderList[0]);
     }
 
     IEnumerator PlaceOrder()
@@ -91,25 +100,32 @@ public class OrderManager : MonoBehaviour
     IEnumerator OrderTimer()
     {
         yield return new WaitForEndOfFrame();
-        for(int i = 0; i < orderList.Count; i++)
+        /*for(int i = 0; i < orderList.Count; i++)
         {
             orderList[i].timeLimit -= Time.deltaTime;
             visualOrders[orderList.IndexOf(orderList[i])].timer.value = (orderList[i].timeLimit - 0) / (ordersTimeLimit - 0) * (1 - 0) + 0;
             if (orderList[i].timeLimit <= 0) RemoveOrder(orderList[i]);
-        }
-        /*foreach(Order activeOrder in orderList)
+        }*/
+        foreach(Order activeOrder in orderList)
         {
             activeOrder.timeLimit -= Time.deltaTime;
             visualOrders[orderList.IndexOf(activeOrder)].timer.value = (activeOrder.timeLimit - 0) / (ordersTimeLimit - 0) * (1 - 0) + 0;
-            if (activeOrder.timeLimit <= 0) RemoveOrder(activeOrder);
-        }*/
+            if (activeOrder.timeLimit <= 0)
+            {
+                visualOrders[orderList.IndexOf(activeOrder)].detailsText.text = "";
+                visualOrders[orderList.IndexOf(activeOrder)].transform.SetSiblingIndex(visualOrders.Count);
+                closedOrderIndx.Add(orderList.IndexOf(activeOrder));
+            }
+        }
+        RemoveOrder();
         StartCoroutine(OrderTimer());
     }
-    private void RemoveOrder(Order order)
+    private void RemoveOrder()
     {
-        visualOrders[orderList.IndexOf(order)].detailsText.text = "";
-        visualOrders[orderList.IndexOf(order)].transform.SetSiblingIndex(visualOrders.Count);
-        //orderList.Remove(order);
+        foreach (int index in closedOrderIndx)
+        {
+            orderList.RemoveAt(index);
+        }
     }
 }
 
