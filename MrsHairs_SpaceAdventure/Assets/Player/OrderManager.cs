@@ -15,7 +15,7 @@ public class OrderManager : MonoBehaviour
     [Space(2.5f), Header("Orders to appear")]
     public int orderListLimit = 5;
     public float orderAdditionTimer = 7.5f;
-    public List<Order> orderList = new List<Order>();
+    public List<Order> activeOrders = new List<Order>();
 
     [Space(2.5f), Header("Order details")]
     public float ordersTimeLimit = 30;
@@ -39,9 +39,9 @@ public class OrderManager : MonoBehaviour
 
     public void CheckDelivery(Plate orderDelivered)
     {
-        foreach(Order order in orderList)
+        foreach(Order order in activeOrders)
         {
-            foreach()
+            //foreach()
         }
         foreach(string dish in orderDelivered.dishOnPlate.Keys)
         {
@@ -54,67 +54,31 @@ public class OrderManager : MonoBehaviour
     {
         yield return new WaitForSeconds(orderAdditionTimer);
 
-        if (createOrders && orderList.Count < orderListLimit)
+        if (createOrders && activeOrders.Count < orderListLimit)
         {
-            Order newOrder = CreateOrder();
-            orderList.Add(newOrder);
+            Order newOrder = new Order(ordersTimeLimit, minDishQuantity, maxDishQuantity, possibleDishes);
+            activeOrders.Add(newOrder);
             string details = "";
-            for(int i = 0; i < newOrder.dishesNeeded.Count; i++)
+            foreach(string dishKey in newOrder.OrderDish.Keys)
             {
-                details+=newOrder.dishesNeeded[i].dishQuantity + " " + newOrder.dishesNeeded[i].dishToGive.DishName + "\n";
+                details += newOrder.OrderDish[dishKey].ToString() + " " + dishKey + "\n";
             }
-            visualOrders[orderList.IndexOf(newOrder)].detailsText.text = details;
+            visualOrders[activeOrders.IndexOf(newOrder)].detailsText.text = details;
         }
         StartCoroutine(PlaceOrder());
-    }
-    private Order CreateOrder()
-    {
-        // Cloned list to pick dishes from
-        List<Dish> dishes = new List<Dish>();
-        for (int i = 0; i < possibleDishes.Count; i++) { dishes.Add(possibleDishes[i]); }
-
-        // Create a new order to add it to the list
-        Order nextOrder = new Order();
-
-        // Amount of different dishes used for this order
-        int numberOfNextDishes = Random.Range(1, dishes.Count + 1);
-        while(numberOfNextDishes > 0)
-        {
-            // Choose the dish to add to the order
-            int nextDishID = Random.Range(0, dishes.Count);
-            Dish nextDish = dishes[nextDishID];
-            
-            // Removes the dish from the cloned list so it doesn't reappear
-            dishes.RemoveAt(nextDishID);
-            
-            // Creates a new order with the required amount of the dish previously selected
-            OrderDishes nextDeliverOrder = new OrderDishes();
-            nextDeliverOrder.dishQuantity = Random.Range(minDishQuantity, maxDishQuantity);
-            nextDeliverOrder.dishToGive = nextDish;
-            nextOrder.dishesNeeded.Add(nextDeliverOrder);
-            numberOfNextDishes--;
-        }
-        nextOrder.timeLimit = ordersTimeLimit;
-        return nextOrder;
     }
     IEnumerator OrderTimer()
     {
         yield return new WaitForEndOfFrame();
-        /*for(int i = 0; i < orderList.Count; i++)
-        {
-            orderList[i].timeLimit -= Time.deltaTime;
-            visualOrders[orderList.IndexOf(orderList[i])].timer.value = (orderList[i].timeLimit - 0) / (ordersTimeLimit - 0) * (1 - 0) + 0;
-            if (orderList[i].timeLimit <= 0) RemoveOrder(orderList[i]);
-        }*/
-        foreach(Order activeOrder in orderList)
+        foreach(Order activeOrder in activeOrders)
         {
             activeOrder.timeLimit -= Time.deltaTime;
-            visualOrders[orderList.IndexOf(activeOrder)].timer.value = (activeOrder.timeLimit - 0) / (ordersTimeLimit - 0) * (1 - 0) + 0;
+            visualOrders[activeOrders.IndexOf(activeOrder)].timer.value = (activeOrder.timeLimit - 0) / (ordersTimeLimit - 0) * (1 - 0) + 0;
             if (activeOrder.timeLimit <= 0)
             {
-                visualOrders[orderList.IndexOf(activeOrder)].detailsText.text = "";
-                visualOrders[orderList.IndexOf(activeOrder)].transform.SetSiblingIndex(visualOrders.Count);
-                closedOrderIndx.Add(orderList.IndexOf(activeOrder));
+                visualOrders[activeOrders.IndexOf(activeOrder)].detailsText.text = "";
+                visualOrders[activeOrders.IndexOf(activeOrder)].transform.SetSiblingIndex(visualOrders.Count);
+                closedOrderIndx.Add(activeOrders.IndexOf(activeOrder));
             }
         }
         RemoveOrder();
@@ -124,24 +88,7 @@ public class OrderManager : MonoBehaviour
     {
         foreach (int index in closedOrderIndx)
         {
-            orderList.RemoveAt(index);
+            activeOrders.RemoveAt(index);
         }
     }
-}
-
-
-// Order classes
-
-[System.Serializable]
-public class Order
-{
-    public float timeLimit;
-    public List<OrderDishes> dishesNeeded = new List<OrderDishes>();
-}
-
-[System.Serializable]
-public class OrderDishes
-{
-    public int dishQuantity;
-    public Dish dishToGive;
 }
