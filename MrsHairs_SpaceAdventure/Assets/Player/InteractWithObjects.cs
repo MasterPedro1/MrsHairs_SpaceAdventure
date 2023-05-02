@@ -26,7 +26,7 @@ public class InteractWithObjects : MonoBehaviour
         float triggerValue = pinchAction.action.ReadValue<float>();
         //Debug.Log(triggerValue);
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || triggerValue > 0)
         {
             if (IsAProp())
             {
