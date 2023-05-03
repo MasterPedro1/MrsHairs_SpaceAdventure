@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plate : MonoBehaviour
 {
-    public Dictionary<string, int> dishOnPlate = new Dictionary<string, int>();
+    public Dictionary<string, int> plateDishes = new Dictionary<string, int>();
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,7 +13,7 @@ public class Plate : MonoBehaviour
 
     public void PlaceDish(string dish)
     {
-        if(!dishOnPlate.ContainsKey(dish)) { dishOnPlate.Add(dish, 1); return; }
-        dishOnPlate[dish]++;
+        if(!plateDishes.ContainsKey(dish)) { plateDishes.Add(dish, 1); return; }
+        plateDishes[dish]++;
     }
 }

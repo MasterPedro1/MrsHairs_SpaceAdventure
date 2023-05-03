@@ -26,46 +26,50 @@ public class OrderManager : MonoBehaviour
 
     private void Awake()
     {
-        foreach(UIOrder visualOrder in transform.GetComponentsInChildren<UIOrder>())
-        {
-            visualOrders.Add(visualOrder);
-        }
+        VisualOrderOrganizer();
     }
     private void Start()
     {
+        CreateOrder();
+        CreateOrder();
         StartCoroutine(PlaceOrder());
         StartCoroutine(OrderTimer());
     }
-
     public void CheckDelivery(Plate orderDelivered)
     {
-        foreach(Order order in activeOrders)
+        bool orderCoincidence = false;
+        foreach(Order orderToCheck in activeOrders)
         {
-            //foreach()
-        }
-        foreach(string dish in orderDelivered.dishOnPlate.Keys)
-        {
+            Debug.Log(orderToCheck.OrderDish.Equals(orderDelivered.plateDishes));
+            /*
+            foreach (string key in orderDelivered.plateDishes.Keys)
+            {
+                if (!orderToCheck.OrderDish.ContainsKey(key)) { break; }
+                if (orderDelivered.plateDishes[key] != orderToCheck.OrderDish[key]) { break; }
 
+            }*/
         }
-        //RemoveOrder(orderList[0]);
     }
-
     IEnumerator PlaceOrder()
     {
         yield return new WaitForSeconds(orderAdditionTimer);
 
         if (createOrders && activeOrders.Count < orderListLimit)
         {
-            Order newOrder = new Order(ordersTimeLimit, minDishQuantity, maxDishQuantity, possibleDishes);
-            activeOrders.Add(newOrder);
-            string details = "";
-            foreach(string dishKey in newOrder.OrderDish.Keys)
-            {
-                details += newOrder.OrderDish[dishKey].ToString() + " " + dishKey + "\n";
-            }
-            visualOrders[activeOrders.IndexOf(newOrder)].detailsText.text = details;
+            CreateOrder();
         }
         StartCoroutine(PlaceOrder());
+    }
+    private void CreateOrder()
+    {
+        Order newOrder = new Order(ordersTimeLimit, minDishQuantity, maxDishQuantity, possibleDishes);
+        activeOrders.Add(newOrder);
+        string details = "";
+        foreach (string dishKey in newOrder.OrderDish.Keys)
+        {
+            details += newOrder.OrderDish[dishKey].ToString() + " " + dishKey + "\n";
+        }
+        visualOrders[activeOrders.IndexOf(newOrder)].detailsText.text = details;
     }
     IEnumerator OrderTimer()
     {
@@ -89,6 +93,16 @@ public class OrderManager : MonoBehaviour
         foreach (int index in closedOrderIndx)
         {
             activeOrders.RemoveAt(index);
+        }
+        closedOrderIndx.Clear();
+        visualOrders.Clear();
+        VisualOrderOrganizer();
+    }
+    private void VisualOrderOrganizer()
+    {
+        foreach (UIOrder visualOrder in transform.GetComponentsInChildren<UIOrder>())
+        {
+            visualOrders.Add(visualOrder);
         }
     }
 }
