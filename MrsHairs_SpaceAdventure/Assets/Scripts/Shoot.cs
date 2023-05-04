@@ -12,7 +12,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] float rayCastMaxDistance;
     [SerializeField] LayerMask enemyLayer;
 
-    public GameObject lightining;
+    public GameObject Lightining;
    
 
     public void Disparar()
@@ -30,11 +30,14 @@ public class Shoot : MonoBehaviour
 
         Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.transform.forward * rayCastMaxDistance, Color.blue);
 
-        lightining.gameObject.SetActive(true);
+        Lightining.gameObject.SetActive(true);
 
         
     }
 
-   
+   public void StopShooting()
+    {
+        Lightining.gameObject.SetActive(false);
+    }
 
 }
