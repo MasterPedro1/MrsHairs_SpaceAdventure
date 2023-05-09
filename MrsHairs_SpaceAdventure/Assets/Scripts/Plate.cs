@@ -8,9 +8,20 @@ public class Plate : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("DeliverStation")) { collision.gameObject.GetComponentInParent<OrderManager>().CheckDelivery(this); }
+        if (collision.gameObject.CompareTag("DeliverStation"))
+        {
+            collision.gameObject.GetComponentInParent<OrderManager>().CheckDelivery(this);
+            Debug.Log(plateDishes);
+        }
+        if (collision.gameObject.CompareTag("Food"))
+        {
+            if (collision.gameObject.GetComponentInParent<Dish>().IsDishFinished)
+            {
+                PlaceDish(collision.gameObject.GetComponentInParent<Dish>().DishName);
+                Debug.Log(plateDishes);
+            }
+        }
     }
-
     public void PlaceDish(string dish)
     {
         if(!plateDishes.ContainsKey(dish)) { plateDishes.Add(dish, 1); return; }

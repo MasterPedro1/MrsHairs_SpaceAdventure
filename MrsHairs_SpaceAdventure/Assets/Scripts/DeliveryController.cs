@@ -8,7 +8,7 @@ public class DeliveryController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Food"))
+        //if (collision.gameObject.CompareTag("Food"))
         {
             Dish dishToCheck = collision.gameObject.GetComponent<Dish>();
             if (dishToCheck.IsDishFinished)
