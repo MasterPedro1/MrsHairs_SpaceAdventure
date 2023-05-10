@@ -36,7 +36,7 @@ public class Fry : MonoBehaviour
 
                 if (!IsCoolDownOn)
                 {
-                    //other.gameObject.transform.SetParent(this.transform, true);
+                    other.gameObject.transform.SetParent(this.transform, true);
                     cookingTime = _dishData.TotalCookingTime;
                     other.gameObject.TryGetComponent(out _progressBar);
                     cookingBounds.SetActive(true);
