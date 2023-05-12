@@ -1178,6 +1178,11 @@ PrefabInstance:
       objectReference: {fileID: 1639119552}
     - target: {fileID: 3505800652466303015, guid: 695215706a5753c4394480e3a829808f,
         type: 3}
+      propertyPath: Lightining
+      value: 
+      objectReference: {fileID: 627875005}
+    - target: {fileID: 3505800652466303015, guid: 695215706a5753c4394480e3a829808f,
+        type: 3}
       propertyPath: lightining
       value: 
       objectReference: {fileID: 627875005}
