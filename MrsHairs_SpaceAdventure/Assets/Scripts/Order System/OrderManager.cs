@@ -10,7 +10,7 @@ public class OrderManager : MonoBehaviour
 {
     [Header("Manager variables")]
     public bool createOrders = true;
-    public List<UIOrder> visualOrders = new List<UIOrder>();
+    public List<WorldOrder> visualOrders = new List<WorldOrder>();
 
     [Space(2.5f), Header("Orders to appear")]
     public int orderListLimit = 5;
@@ -100,7 +100,7 @@ public class OrderManager : MonoBehaviour
     }
     private void VisualOrderOrganizer()
     {
-        foreach (UIOrder visualOrder in transform.GetComponentsInChildren<UIOrder>())
+        foreach (WorldOrder visualOrder in transform.GetComponentsInChildren<WorldOrder>())
         {
             visualOrders.Add(visualOrder);
         }
