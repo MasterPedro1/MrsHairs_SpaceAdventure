@@ -30,8 +30,8 @@ public class OrderManager : MonoBehaviour
     }
     private void Start()
     {
-        CreateOrder();
-        CreateOrder();
+        // CreateOrder();
+        // CreateOrder();
         StartCoroutine(PlaceOrder());
         StartCoroutine(OrderTimer());
     }
