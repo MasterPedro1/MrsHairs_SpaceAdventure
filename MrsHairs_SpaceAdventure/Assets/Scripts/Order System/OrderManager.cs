@@ -41,6 +41,7 @@ public class OrderManager : MonoBehaviour
             ClearVisualOrder(orderIndx);
             closedOrderIndx.Add(orderIndx);
             print("Correct order");
+            
         }
         else
         {
