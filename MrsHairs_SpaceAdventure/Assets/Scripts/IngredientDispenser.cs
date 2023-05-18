@@ -36,6 +36,7 @@ public class IngredientDispenser : MonoBehaviour
             GameObject ingredient = _ingredientsPool.Get();
             ingredient.transform.position = spawnPosition.position;
             DeactivateIngredient(ingredient);
+            ingredient.SetActive(true);
         }
     }
 

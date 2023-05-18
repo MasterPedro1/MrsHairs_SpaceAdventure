@@ -6,11 +6,14 @@ using TMPro;
 
 public class TextPass : MonoBehaviour
 {
-    public TextMeshProUGUI[] textos;
+    public GameObject[] textos;
     private int indiceActual = 0;
     public InputActionProperty pinchAction;
+    private bool vrAction;
     private void Start()
     {
+        vrAction = pinchAction.action.ReadValue<bool>();
+
         // Desactiva todos los textos excepto el primero
         for (int i = 1; i < textos.Length; i++)
         {
@@ -21,7 +24,7 @@ public class TextPass : MonoBehaviour
     private void Update()
     {
         // Verifica si se ha presionado el botón "A" del Oculus Quest 2
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || vrAction)
         {
             // Cambia al siguiente texto
             CambiarTexto();
