@@ -30,25 +30,23 @@ public class OrderManager : MonoBehaviour
     }
     private void Start()
     {
-        // CreateOrder();
-        // CreateOrder();
         StartCoroutine(PlaceOrder());
         StartCoroutine(OrderTimer());
-    }
-    public void CheckDelivery(Plate orderDelivered)
+    }  
+    public void CheckDelivery(WorldOrder orderToCheck, Plate plateTocheck)
     {
-        bool orderCoincidence = false;
-        foreach(Order orderToCheck in activeOrders)
+        int orderIndx = visualOrders.IndexOf(orderToCheck);
+        if (activeOrders[orderIndx].OrderDish.Equals(plateTocheck.plateDishes)) 
         {
-            Debug.Log(orderToCheck.OrderDish.Equals(orderDelivered.plateDishes));
-            /*
-            foreach (string key in orderDelivered.plateDishes.Keys)
-            {
-                if (!orderToCheck.OrderDish.ContainsKey(key)) { break; }
-                if (orderDelivered.plateDishes[key] != orderToCheck.OrderDish[key]) { break; }
-
-            }*/
+            ClearVisualOrder(orderIndx);
+            closedOrderIndx.Add(orderIndx);
+            print("Correct order");
         }
+        else
+        {
+            print("Incorrect order");
+        }
+        Destroy(plateTocheck.gameObject);
     }
     IEnumerator PlaceOrder()
     {
@@ -80,13 +78,17 @@ public class OrderManager : MonoBehaviour
             visualOrders[activeOrders.IndexOf(activeOrder)].timer.value = (activeOrder.timeLimit - 0) / (ordersTimeLimit - 0) * (1 - 0) + 0;
             if (activeOrder.timeLimit <= 0)
             {
-                visualOrders[activeOrders.IndexOf(activeOrder)].detailsText.text = "";
-                visualOrders[activeOrders.IndexOf(activeOrder)].transform.SetSiblingIndex(visualOrders.Count);
+                ClearVisualOrder(activeOrders.IndexOf(activeOrder));
                 closedOrderIndx.Add(activeOrders.IndexOf(activeOrder));
             }
         }
         RemoveOrder();
         StartCoroutine(OrderTimer());
+    }
+    private void ClearVisualOrder(int indx)
+    {
+        visualOrders[indx].detailsText.text = "";
+        visualOrders[indx].transform.SetSiblingIndex(visualOrders.Count);
     }
     private void RemoveOrder()
     {
