@@ -10,8 +10,7 @@ public class Plate : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DeliverStation"))
         {
-            collision.gameObject.GetComponentInParent<OrderManager>().CheckDelivery(this);
-            Debug.Log(plateDishes);
+            collision.gameObject.GetComponentInParent<DeliveryController>().SendPlateInfo(this);
         }
         if (collision.gameObject.CompareTag("Food"))
         {
