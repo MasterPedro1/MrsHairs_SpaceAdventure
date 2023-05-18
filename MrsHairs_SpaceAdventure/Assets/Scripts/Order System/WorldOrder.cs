@@ -25,9 +25,4 @@ public class WorldOrder : MonoBehaviour
     {
         transform.LookAt(_player.position);
     }
-    //public float VisualTimer(float orderTime)
-    //{
-    //    //timer.value = 
-    //
-    //}
 }
