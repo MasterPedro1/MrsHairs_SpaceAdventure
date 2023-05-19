@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] float coins;
+    [SerializeField] TextMeshProUGUI text;
     public float Coins { get { return coins; } set { coins = value; } }
 
     public static GameManager Instance { get; private set; }
@@ -21,14 +22,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void IncreaseScore(TextMeshProUGUI text, float increaseValue)
+    public void IncreaseScore( float increaseValue)
     {
         coins += increaseValue;
         text.text = coins.ToString();
     }
 
 
-    public void DecreaseScore(TextMeshProUGUI text, float increaseValue)
+    public void DecreaseScore(float increaseValue)
     {
         coins -= increaseValue;
         if (coins <= 0) 

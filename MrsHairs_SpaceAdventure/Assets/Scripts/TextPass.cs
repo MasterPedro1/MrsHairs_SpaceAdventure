@@ -31,7 +31,7 @@ public class TextPass : MonoBehaviour
         }
     }
 
-    private void CambiarTexto()
+    public void CambiarTexto()
     {
         // Desactiva el texto actual
         textos[indiceActual].gameObject.SetActive(false);

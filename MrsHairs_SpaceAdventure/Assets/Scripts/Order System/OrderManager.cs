@@ -41,7 +41,7 @@ public class OrderManager : MonoBehaviour
             ClearVisualOrder(orderIndx);
             closedOrderIndx.Add(orderIndx);
             print("Correct order");
-            
+            GameManager.Instance.IncreaseScore(500f);
         }
         else
         {
