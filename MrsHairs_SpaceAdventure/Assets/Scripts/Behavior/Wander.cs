@@ -12,6 +12,7 @@ public class Wander : MonoBehaviour
     public float runAwayForceMagnitude = 10f;
     public float maxSpeed = 5f;
     public Vector3 movementBounds = new Vector3(20f, 20f, 20f);
+    public float yu = 7f;
 
     private Vector3 wanderTarget;
     private Rigidbody rb;
@@ -43,7 +44,7 @@ public class Wander : MonoBehaviour
         // Limita la posición dentro de los límites establecidos
         Vector3 clampedPosition = transform.position;
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, -movementBounds.x, movementBounds.x);
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, 4f , movementBounds.y);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, yu , movementBounds.y);
         clampedPosition.z = Mathf.Clamp(clampedPosition.z, -movementBounds.z, movementBounds.z);
         transform.position = clampedPosition;
     }
