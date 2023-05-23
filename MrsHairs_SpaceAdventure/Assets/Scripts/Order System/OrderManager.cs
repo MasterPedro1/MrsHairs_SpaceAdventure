@@ -36,12 +36,12 @@ public class OrderManager : MonoBehaviour
     public void CheckDelivery(WorldOrder orderToCheck, Plate plateTocheck)
     {
         int orderIndx = visualOrders.IndexOf(orderToCheck);
-        if (activeOrders[orderIndx].OrderDish.Equals(plateTocheck.plateDishes)) 
+        
+        if (CompareDishes(plateTocheck.plateDishes, activeOrders[orderIndx].OrderDish))
         {
             ClearVisualOrder(orderIndx);
             closedOrderIndx.Add(orderIndx);
-            print("Correct order");
-            GameManager.Instance.IncreaseScore(500f);
+            //GameManager.Instance.IncreaseScore(500f);
         }
         else
         {
@@ -58,6 +58,15 @@ public class OrderManager : MonoBehaviour
             CreateOrder();
         }
         StartCoroutine(PlaceOrder());
+    }
+    private bool CompareDishes(Dictionary<string, int> plateDictionary, Dictionary<string, int> orderDictionary)
+    {
+        if (plateDictionary.Count != orderDictionary.Count) { return false; }
+        foreach(string key in plateDictionary.Keys)
+        {
+            if (!orderDictionary.ContainsKey(key) || plateDictionary[key] != orderDictionary[key]) { return false; }
+        }
+        return true;
     }
     private void CreateOrder()
     {

@@ -14,7 +14,7 @@ public class Dish : MonoBehaviour
     [SerializeField] string indFState;
 
     [Header("Dish")]
-    [SerializeField] GameObject preDish, finishedDish;
+    public GameObject preDish, finishedDish;
     [SerializeField] string tagName;
     public bool IsReadyToCook = false, IsDishFinished = false;
 
