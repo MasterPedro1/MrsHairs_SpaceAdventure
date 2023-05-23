@@ -38331,8 +38331,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Se muestra el tipo de platillo y la cantidad que quieren
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -43538,8 +43539,9 @@ MonoBehaviour:
   m_text: Intenta agarrar el cuchillo y sigue las instrucciones de tu televisor para
     preparar una quesadilla.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -65573,8 +65575,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -65729,8 +65732,9 @@ MonoBehaviour:
   m_text: Hola, bienvenido a Mrs Hairs Space Adventure, mueve la cabeza para poder
     ver a tu alrededor
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -76961,8 +76965,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Utliza el "Gatillo"de los controles para agarrar los objetos '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -110642,8 +110647,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Aqui te saldran las ordenes de los clientes
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -123297,8 +123303,9 @@ MonoBehaviour:
   m_text: Cuando termines de preparar el platillo, llevalo a la mesa y colocalo en
     el plato
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -124402,8 +124409,9 @@ MonoBehaviour:
   m_text: "Usa el \"joystick\" izquierdo para moverte y usa el \"joystick\" derecho
     para mover la c\xE1mara"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -124825,8 +124833,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Abajo de la orden se muestra el tiempo que tienes para preparar la orden
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -146578,8 +146587,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dirigete a la cocina
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a46943a8f11cf5641b17b9df520e584f, type: 2}
+  m_sharedMaterial: {fileID: 211780227776648915, guid: a46943a8f11cf5641b17b9df520e584f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
