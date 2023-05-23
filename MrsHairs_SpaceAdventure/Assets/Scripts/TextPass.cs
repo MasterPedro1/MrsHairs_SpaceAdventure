@@ -36,31 +36,33 @@ public class TextPass : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.A) || vrAction)
         {
-            
-            if (indiceActual < textos.Length - 1)
-            {
-                CambiarTexto();
-            }
-            else if(!istv)
-            {
-                gameObject.SetActive(false); 
-            }
 
-           
+            CambiarTexto();
+
+
         }
     }
 
     public void CambiarTexto()
     {
-        
-        textoActual.SetActive(false);
 
-        
-        indiceActual = (indiceActual + 1) % textos.Length;
 
+        if (indiceActual < textos.Length - 1)
+        {
+            textoActual.SetActive(false);
+
+
+            indiceActual = (indiceActual + 1) % textos.Length;
+
+
+            textos[indiceActual].SetActive(true);
+            textoActual = textos[indiceActual];
+        }
+        else if (!istv)
+        {
+            gameObject.SetActive(false);
+        }
         
-        textos[indiceActual].SetActive(true);
-        textoActual = textos[indiceActual];
     }
 
 }
