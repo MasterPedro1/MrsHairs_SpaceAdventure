@@ -41,7 +41,7 @@ public class OrderManager : MonoBehaviour
         {
             ClearVisualOrder(orderIndx);
             closedOrderIndx.Add(orderIndx);
-            //GameManager.Instance.IncreaseScore(500f);
+            GameManager.Instance.IncreaseScore(500f);
         }
         else
         {
