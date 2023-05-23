@@ -60,7 +60,7 @@ public class TextPass : MonoBehaviour
         }
         else if (!istv)
         {
-            gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
         
     }
