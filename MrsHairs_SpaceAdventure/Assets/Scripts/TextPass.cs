@@ -47,7 +47,7 @@ public class TextPass : MonoBehaviour
     {
 
 
-        if (indiceActual < textos.Length - 1)
+        if (indiceActual < textos.Length - 1 || istv)
         {
             textoActual.SetActive(false);
 
