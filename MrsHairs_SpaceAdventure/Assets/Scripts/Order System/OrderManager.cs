@@ -47,7 +47,7 @@ public class OrderManager : MonoBehaviour
         {
             print("Incorrect order");
         }
-        Destroy(plateTocheck.gameObject);
+        plateTocheck.ReturnPlate();
     }
     IEnumerator PlaceOrder()
     {

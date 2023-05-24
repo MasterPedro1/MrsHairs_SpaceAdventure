@@ -7,15 +7,18 @@ public class Plate : MonoBehaviour
     public Dictionary<string, int> plateDishes = new Dictionary<string, int>();
     public Transform dishAnchors;
 
-    private int anchorIndx = 0;
-    private List<Transform> anchor = new List<Transform>();
+    private int _anchorIndx = 0;
+    private List<Transform> _anchor = new List<Transform>();
+    private List<GameObject> _dishMesh = new List<GameObject>();
+    private ObjDispenser _dispenser;
 
     private void Awake()
     {
         foreach (Transform plateAnchor in dishAnchors.GetComponentInChildren<Transform>())
         {
-            anchor.Add(plateAnchor);
+            _anchor.Add(plateAnchor);
         }
+        _dispenser = FindObjectOfType<ObjDispenser>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,11 +35,22 @@ public class Plate : MonoBehaviour
             }
         }
     }
+    public void ReturnPlate()
+    {
+        foreach(GameObject mesh in  _dishMesh)
+        {
+            Destroy(mesh);
+        }
+        _anchorIndx = 0;
+        plateDishes.Clear();
+        _dispenser.ResetObjPosition(transform);
+    }
     public void PlaceDish(string dish, GameObject finishedDish)
     {
-        GameObject foodMesh = Instantiate(finishedDish, anchor[anchorIndx].position, anchor[anchorIndx].rotation, anchor[anchorIndx]);
+        GameObject foodMesh = Instantiate(finishedDish, _anchor[_anchorIndx].position, _anchor[_anchorIndx].rotation, _anchor[_anchorIndx]);
         foodMesh.SetActive(true);
-        anchorIndx++;
+        _dishMesh.Add(foodMesh);
+        _anchorIndx++;
         if (!plateDishes.ContainsKey(dish))
         {
             plateDishes.Add(dish, 1);
