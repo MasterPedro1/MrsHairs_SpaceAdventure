@@ -6,6 +6,7 @@ using UnityEngine;
 public class Fry : MonoBehaviour
 {
     [SerializeField] GameObject cookingBounds;
+    [SerializeField] Transform parentTransform;
     [SerializeField] float cookingTime;
     [SerializeField] string meatName;
     public bool IsCooking = false, IsCoolDownOn = false;
@@ -15,6 +16,7 @@ public class Fry : MonoBehaviour
     float _secondTimer = 0f, _currentCookingState, _percentageMeat;
     Dish _dishData;
     IngredientData _ingDta;
+    Rigidbody _otherRb;
 
     private void Update()
     {
@@ -32,11 +34,14 @@ public class Fry : MonoBehaviour
             try
             {
                 _dishData = other.GetComponent<Dish>();
+                _otherRb = other.GetComponent<Rigidbody>();
                 if(!_dishData.IsReadyToCook) { return; }
 
                 if (!IsCoolDownOn)
                 {
-                    other.gameObject.transform.SetParent(this.transform, true);
+                    other.gameObject.transform.SetParent(parentTransform, true);
+                    _otherRb.constraints = RigidbodyConstraints.FreezeAll;
+
                     cookingTime = _dishData.TotalCookingTime;
                     other.gameObject.TryGetComponent(out _progressBar);
                     cookingBounds.SetActive(true);
@@ -156,10 +161,11 @@ public class Fry : MonoBehaviour
         yield return new WaitForSeconds(time);
             cookingBounds.SetActive(false);
             IsCooking = false;
-           _dishData.IsDishFinished = true;
+            _dishData.IsDishFinished = true;
             _foodT.transform.eulerAngles = new Vector3(_foodT.rotation.x, _foodT.rotation.y, _foodT.rotation.z);
             _progressBar.progressBarGO.SetActive(false);
             _foodT.gameObject.transform.SetParent(null);
+            _otherRb.constraints = RigidbodyConstraints.None;
             StartCoroutine(CoolDown(3f));
     }
 
