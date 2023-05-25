@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerText : MonoBehaviour
 {
     public GameObject text;
-    public GameObject cubeant;
+    public GameObject[] cubeant;
 
     private void Start()
     {
@@ -17,9 +17,17 @@ public class TriggerText : MonoBehaviour
     {
         if (other.CompareTag("Player"))
 
-        { 
-            text.SetActive(true);
-            Destroy(cubeant.gameObject);
+        {
+            try
+            {
+                text.SetActive(true);
+                Destroy(cubeant[0].gameObject);
+                Destroy(cubeant[1].gameObject);
+            }
+            catch
+            {
+
+            }
         
         }
     }
