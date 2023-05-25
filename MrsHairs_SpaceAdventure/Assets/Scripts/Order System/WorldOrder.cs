@@ -8,7 +8,7 @@ public class WorldOrder : MonoBehaviour
 {
     public TextMeshProUGUI detailsText;
     public Slider timer;
-
+    public bool followPlayer = true;
     private Transform _player;
 
     private void Awake()
@@ -19,10 +19,15 @@ public class WorldOrder : MonoBehaviour
     }
     private void Update()
     {
-        RotateToPlayer();
+        if (followPlayer) { RotateToPlayer(); }
     }
     private void RotateToPlayer()
     {
         transform.LookAt(_player.position);
+    }
+    public void CloneOrder(WorldOrder orderToClone)
+    {
+        detailsText = orderToClone.detailsText;
+        timer = orderToClone.timer;
     }
 }
