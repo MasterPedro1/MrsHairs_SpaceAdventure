@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,6 +20,12 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+
+    private void Start()
+    {
+        text.text = coins.ToString();
     }
 
 
@@ -34,10 +41,12 @@ public class GameManager : MonoBehaviour
         coins -= increaseValue;
         if (coins <= 0) 
         {
-            coins = 0;
+            //coins = 0;
+            text.color= Color.red;
             text.text = coins.ToString();
             return; 
         }
+        text.color = Color.black;
         text.text = coins.ToString();
     }
 }
