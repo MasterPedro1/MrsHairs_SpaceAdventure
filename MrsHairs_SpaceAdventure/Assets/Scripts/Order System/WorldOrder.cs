@@ -27,7 +27,7 @@ public class WorldOrder : MonoBehaviour
     }
     public void CloneOrder(WorldOrder orderToClone)
     {
-        detailsText = orderToClone.detailsText;
-        timer = orderToClone.timer;
+        detailsText.text = orderToClone.detailsText.text;
+        timer.value = orderToClone.timer.value;
     }
 }

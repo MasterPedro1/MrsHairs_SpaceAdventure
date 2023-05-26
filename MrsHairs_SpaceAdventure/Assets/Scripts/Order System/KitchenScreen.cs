@@ -5,14 +5,13 @@ using UnityEngine;
 public class KitchenScreen : MonoBehaviour
 {
     public GameObject screenUiOrder;
+    public Transform orderUiArea;
 
-    private Transform _orderUiArea;
     private OrderManager _orderManager;
     private List<WorldOrder> _screenOrder = new List<WorldOrder>();
 
     private void Awake()
     {
-        _orderUiArea = GetComponentInChildren<Transform>();
         _orderManager = FindObjectOfType<OrderManager>();
     }
     private IEnumerator Start()
@@ -35,14 +34,14 @@ public class KitchenScreen : MonoBehaviour
     {
         for (int i = 0; i < _screenOrder.Count; i++)
         {
-            GameObject newVisualOrder = Instantiate(screenUiOrder, _orderUiArea);
+            GameObject newVisualOrder = Instantiate(screenUiOrder, orderUiArea);
             _screenOrder[i] = newVisualOrder.GetComponent<WorldOrder>();
             _screenOrder[i].followPlayer = false;
         }
     }
     private IEnumerator GetOrders()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(.5f);
         _screenOrder = CloneOrderList();
     }
     private List<WorldOrder> CloneOrderList()
