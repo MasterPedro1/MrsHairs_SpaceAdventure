@@ -10,6 +10,15 @@ public class GlowObjects : MonoBehaviour
     {
         material = rendererMat.GetComponent<Renderer>().material;
 
-        material.EnableKeyword("_EMISSION");
+        //material.EnableKeyword("_EMISSION");
+        material.SetFloat("_Intensity", 7);
+    }
+
+    public void GlowDown()
+    {
+        material = rendererMat.GetComponent<Renderer>().material;
+
+        //material.EnableKeyword("_EMISSION");
+        material.SetFloat("_Intensity", 1.4f);
     }
 }
