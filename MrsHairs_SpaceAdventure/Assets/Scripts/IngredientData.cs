@@ -32,4 +32,20 @@ public class IngredientData : MonoBehaviour
         IsCutted = false;
         IsFryed = false;    
     }
+
+
+    public void ResetData()
+    {
+        IngCookingState = IngredientCookingState.Azul;
+        IsCutted = false;
+        IsFryed = false;
+        if (IngTypes == IngredientTypes.IsCuttable)
+        {
+            try
+            {
+                var isC = GetComponent<Cuttable>();
+                isC.ResetGameObject();
+            }catch { }
+        }
+    }
 }

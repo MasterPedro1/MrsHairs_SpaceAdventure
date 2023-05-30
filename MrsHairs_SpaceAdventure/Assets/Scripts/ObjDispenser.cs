@@ -8,11 +8,11 @@ public class ObjDispenser : MonoBehaviour
     [SerializeField] public  GameObject gObjPrefab;
     [SerializeField] private int spawnAmount;
     [HideInInspector] public List<GameObject> _ingredientsPool = new List<GameObject>();
-    private Vector3 _spawnPosition;
+    [SerializeField] Transform _spawnPosition;
 
     private void Awake()
     {
-        _spawnPosition = transform.position + Vector3.up * 2.5f;
+        //_spawnPosition = transform.position + Vector3.up * 2.5f;
     }
     private void Start()
     {
@@ -27,10 +27,25 @@ public class ObjDispenser : MonoBehaviour
     }
     public void ResetObjPosition(Transform obj)
     {
-        obj.position = _spawnPosition;
+        obj.position = _spawnPosition.position;
     }
     private GameObject PoolObj()
     {
-        return Instantiate(gObjPrefab, _spawnPosition, transform.rotation);
+        GameObject objt = Instantiate(gObjPrefab, _spawnPosition.position, transform.rotation);
+        objt.SetActive(false);
+        return objt;
+    }
+
+    public void GetObject()
+    {
+        for (int i = 0; i < _ingredientsPool.Count; i++)
+        {
+            if (!_ingredientsPool[i].gameObject.activeInHierarchy)
+            {
+                ResetObjPosition(_ingredientsPool[i].transform);
+                _ingredientsPool[i].SetActive(true);
+                break;
+            }
+        }
     }
 }

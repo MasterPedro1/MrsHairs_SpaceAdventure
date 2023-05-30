@@ -52,6 +52,7 @@ public class Dish : MonoBehaviour
                 preDish.SetActive(false);
                 finishedDish.SetActive(true);
                 IsReadyToCook = true;
+                _ingData.ResetData();
             }
         }
     }

@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 2130214695137371630}
   - component: {fileID: 3044382151303096907}
   - component: {fileID: 998433688031403649}
-  - component: {fileID: 3044382151303096906}
-  m_Layer: 0
+  - component: {fileID: 1972166423}
+  m_Layer: 6
   m_Name: Queso_Cortado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: ac19c79ca75f3c54a89e20ad8e1ae32b, type: 3}
+  - {fileID: 2100000, guid: abf342288148d794f9e7cd893de1c9ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,19 +115,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3044382151303096906
-BoxCollider:
+--- !u!114 &1972166423
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647150151842316116}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09645725, y: 0.09716921, z: 0.02}
-  m_Center: {x: 0.0043559666, y: -0.0022880745, z: -0.00000002975195}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b97c493d3f5e58408b9ce648e7696fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: abf342288148d794f9e7cd893de1c9ea, type: 2}
+  rendererMat: {fileID: 998433688031403649}
 --- !u!1 &5009948096613629697
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +425,7 @@ GameObject:
   - component: {fileID: 5009948097237065411}
   - component: {fileID: 1365990330}
   - component: {fileID: 1365990329}
+  - component: {fileID: 1735374585}
   m_Layer: 6
   m_Name: Queso
   m_TagString: Ingredient
@@ -461,8 +463,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.36271954, y: 0.26612574, z: 0.35899162}
-  m_Center: {x: -0.034985065, y: 0.05992946, z: 0.037441254}
+  m_Size: {x: 0.6321902, y: 0.29410237, z: 0.69518477}
+  m_Center: {x: -0.006331838, y: 0.07391774, z: 0.0017107207}
 --- !u!114 &5009948097237065434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +543,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3627195, y: 0.2661257, z: 0.3589916}
+  m_Size: {x: 0.64, y: 0.2661257, z: 0.71}
   m_Center: {x: 0, y: 0.07, z: 0}
 --- !u!114 &1365990329
 MonoBehaviour:
@@ -567,10 +569,58 @@ MonoBehaviour:
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1735374585}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: GlowUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1972166423}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: GlowUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_LastHoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1735374585}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: GlowDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1972166423}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: GlowDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -668,6 +718,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &1735374585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009948097237065435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b97c493d3f5e58408b9ce648e7696fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: abf342288148d794f9e7cd893de1c9ea, type: 2}
+  rendererMat: {fileID: 7666222035976861327}
 --- !u!1 &5009948097588896374
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,8 +933,7 @@ GameObject:
   - component: {fileID: 8802505991082200544}
   - component: {fileID: 5586454869155037765}
   - component: {fileID: 7666222035976861327}
-  - component: {fileID: 8802505991082200547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Queso_Completo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +983,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 70d03c5251cc9df42bac96819e6b0228, type: 2}
+  - {fileID: 2100000, guid: abf342288148d794f9e7cd893de1c9ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -942,16 +1005,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8802505991082200547
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8170400688405452634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.019807851, y: 0.019999998, z: 0.020000003}
-  m_Center: {x: 0.00009607383, y: 0.000000029799459, z: 1.5036833e-11}

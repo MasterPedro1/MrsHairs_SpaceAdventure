@@ -12,6 +12,8 @@ public class GlowObjects : MonoBehaviour
 
         //material.EnableKeyword("_EMISSION");
         material.SetFloat("_Intensity", 7);
+        material.SetColor("_Color", new Color(0.1191339f, 1f, 0f, 0f));
+        
     }
 
     public void GlowDown()
@@ -20,5 +22,6 @@ public class GlowObjects : MonoBehaviour
 
         //material.EnableKeyword("_EMISSION");
         material.SetFloat("_Intensity", 1.4f);
+        material.SetColor("_Color", new Color(0f, 0.6884818f, 1f, 0f));
     }
 }

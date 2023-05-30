@@ -9,8 +9,13 @@ public class Cuttable : MonoBehaviour
     [SerializeField] IngredientData ingData;
     [SerializeField] ProgressBar progressBar;
     public int ItemDurability;
+    private int _itemD;
 
     int _damageValue = 1;
+    private void Start()
+    {
+        _itemD = ItemDurability;
+    }
     private void OnTriggerEnter(Collider other)
     {        
         if (!other.CompareTag("Knife"))
@@ -38,5 +43,12 @@ public class Cuttable : MonoBehaviour
             progressBar.progressBarGO.SetActive(false);
         }
         Debug.Log(ItemDurability);
+    }
+
+    public void ResetGameObject()
+    {
+        ItemDurability = _itemD;
+        normalGameObject.SetActive(true);
+        cuttedGameObject.SetActive(false);
     }
 }
