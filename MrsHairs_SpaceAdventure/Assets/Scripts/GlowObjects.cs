@@ -6,6 +6,13 @@ public class GlowObjects : MonoBehaviour
 {
     [SerializeField] Material material;
     [SerializeField] Renderer rendererMat;
+
+
+    private void Start()
+    {
+        GlowDown();
+    }
+
     public void GlowUp()
     {
         material = rendererMat.GetComponent<Renderer>().material;
@@ -23,5 +30,14 @@ public class GlowObjects : MonoBehaviour
         //material.EnableKeyword("_EMISSION");
         material.SetFloat("_Intensity", 1.4f);
         material.SetColor("_Color", new Color(0f, 0.6884818f, 1f, 0f));
+    }
+
+    public void DisableGlow()
+    {
+        material = rendererMat.GetComponent<Renderer>().material;
+
+        //material.EnableKeyword("_EMISSION");
+        material.SetFloat("_Intensity", 0f);
+        material.SetColor("_Color", new Color(0f, 0f, 0f, 0f));
     }
 }

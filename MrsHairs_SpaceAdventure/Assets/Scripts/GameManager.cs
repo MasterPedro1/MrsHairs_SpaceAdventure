@@ -25,14 +25,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        text.text = coins.ToString();
+        text.color = Color.green;
+        text.text = "$" + coins.ToString();
     }
 
 
     public void IncreaseScore( float increaseValue)
     {
+        text.color = Color.green;
         coins += increaseValue;
-        text.text = coins.ToString();
+        text.text = "$" + coins.ToString();
     }
 
 
@@ -43,10 +45,10 @@ public class GameManager : MonoBehaviour
         {
             //coins = 0;
             text.color= Color.red;
-            text.text = coins.ToString();
+            text.text = "$" + coins.ToString();
             return; 
         }
-        text.color = Color.black;
-        text.text = coins.ToString();
+        text.color = Color.green;
+        text.text = "$" + coins.ToString();
     }
 }
