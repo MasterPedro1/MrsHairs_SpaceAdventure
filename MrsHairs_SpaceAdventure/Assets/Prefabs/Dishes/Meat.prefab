@@ -324,8 +324,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredient: {fileID: 11400000, guid: b184b7b205f804f4abcbd88656a3cf43, type: 2}
   IngName: 
-  IsMeat: 0
-  IngTypes: 0
+  IsMeat: 1
+  IngTypes: 2
   IsCutted: 0
   IsFryed: 0
   CookingTime: 0
