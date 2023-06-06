@@ -48,6 +48,6 @@ public class AudioManager : MonoBehaviour
     IEnumerator CountToEnd()
     {
         while (GetComponent<AudioSource>().isPlaying) { yield return null; }
-        FindObjectOfType<HiddenObjectManager>().CallEnd();
+        //FindObjectOfType<HiddenObjectManager>().CallEnd();
     }
 }
