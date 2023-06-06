@@ -22,8 +22,8 @@ public class Shoot : MonoBehaviour
         {
             if (hit.transform.tag == "Enemy")
             {
-                hit.transform.GetComponent<Enemy>().QuitarVida();
-                hit.transform.GetComponent<Enemy>().Slider();
+               // hit.transform.GetComponent<Enemy>().CambiarMaterialAleatorio();
+                
             }
         }
         else isHitting = false;
