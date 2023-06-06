@@ -36,7 +36,7 @@ public class Fry : MonoBehaviour
                 _dishData = other.GetComponent<Dish>();
                 _otherRb = other.GetComponent<Rigidbody>();
                 if(!_dishData.IsReadyToCook) { return; }
-
+                if (_dishData.IsDishFinished) { return; }
                 if (!IsCoolDownOn)
                 {
                     other.gameObject.transform.SetParent(parentTransform, true);

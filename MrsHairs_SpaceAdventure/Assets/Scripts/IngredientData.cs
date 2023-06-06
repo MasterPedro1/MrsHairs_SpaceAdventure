@@ -5,7 +5,7 @@ using UnityEngine;
 public class IngredientData : MonoBehaviour
 {
     [SerializeField] Ingredient ingredient;
-    public string IngName;
+    [HideInInspector] public string IngName;
     public bool IsMeat;
 
     public enum IngredientTypes
@@ -13,16 +13,16 @@ public class IngredientData : MonoBehaviour
         IsCuttable, IsFryable, IsBoth
     }
     public IngredientTypes IngTypes;
-    public bool IsCutted;
+    [HideInInspector] public bool IsCutted;
 
     [Header("Fryable Settings")]
-    public bool IsFryed;
-    public float CookingTime;
+    [HideInInspector] public bool IsFryed;
+    [HideInInspector] public float CookingTime;
     public enum IngredientCookingState
     {
         Azul, Rojo, TerminoMedio, TresCuartos, BienCocido
     }
-    public IngredientCookingState IngCookingState;
+    [HideInInspector] public IngredientCookingState IngCookingState;
 
 
     private void Awake()
