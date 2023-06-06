@@ -11,6 +11,7 @@ public class OrderManager : MonoBehaviour
     [Header("Manager variables")]
     public bool createOrders = true;
     public List<WorldOrder> visualOrders = new List<WorldOrder>();
+    [SerializeField] bool isTutorial = false;
 
     [Space(2.5f), Header("Orders to appear")]
     public int orderListLimit = 5;
@@ -42,6 +43,7 @@ public class OrderManager : MonoBehaviour
             ClearVisualOrder(orderIndx);
             closedOrderIndx.Add(orderIndx);
             GameManager.Instance.IncreaseScore(500f);
+            if (isTutorial) GameManager.Instance.StopTutorial();
         }
         else
         {

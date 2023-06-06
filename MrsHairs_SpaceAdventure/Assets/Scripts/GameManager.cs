@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] float coins;
-    [SerializeField] TextMeshProUGUI text;
+    
     public float Coins { get { return coins; } set { coins = value; } }
 
     public static GameManager Instance { get; private set; }
@@ -25,16 +25,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        text.color = Color.green;
-        text.text = "$" + coins.ToString();
+        Time.timeScale = 1;
+       
     }
 
 
     public void IncreaseScore( float increaseValue)
     {
-        text.color = Color.green;
         coins += increaseValue;
-        text.text = "$" + coins.ToString();
+        UIManager.Instance.UpdatePositiveCoinsUI();
     }
 
 
@@ -44,11 +43,15 @@ public class GameManager : MonoBehaviour
         if (coins <= 0) 
         {
             //coins = 0;
-            text.color= Color.red;
-            text.text = "$" + coins.ToString();
+            UIManager.Instance.UpdateNegativeCoinsUI();
             return; 
         }
-        text.color = Color.green;
-        text.text = "$" + coins.ToString();
+        UIManager.Instance.UpdatePositiveCoinsUI();
+    }
+
+    public void StopTutorial()
+    {
+        Time.timeScale = 0;
+        UIManager.Instance.ShowTutorialFinished();
     }
 }
