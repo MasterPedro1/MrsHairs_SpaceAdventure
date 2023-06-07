@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 1732214794868423185}
   - component: {fileID: 1732214794868423186}
   - component: {fileID: 3223403482838108207}
+  - component: {fileID: 8259901266078456060}
   m_Layer: 7
   m_Name: Gordita 1
   m_TagString: Food
@@ -484,6 +485,30 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &8259901266078456060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732214794868423192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7326a6d05e7454c93ba76f424f6df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DishName: Gordita
+  NumberOfIngredients: 2
+  TotalCookingTime: 10
+  Ingredients:
+  - {fileID: 11400000, guid: b184b7b205f804f4abcbd88656a3cf43, type: 2}
+  - {fileID: 11400000, guid: 254f1890aab97224fbb82dcd98182a8e, type: 2}
+  MeatFryedState: 4
+  tagName: Ingredient
+  preDish: {fileID: 2997264281786493604}
+  finishedDish: {fileID: 5065971677933186509}
+  IsReadyToCook: 0
+  IsDishFinished: 0
 --- !u!1 &1732214795345310706
 GameObject:
   m_ObjectHideFlags: 0
