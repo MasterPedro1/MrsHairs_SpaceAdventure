@@ -67,10 +67,12 @@ public class Fry : MonoBehaviour
 
                     if (_ingDta.IsFryed) return;
                     if (_ingDta.IsMeat)
-                    {                        
+                    {
+                        Debug.Log("Es carne");
+                        other.gameObject.transform.SetParent(parentTransform, true);
                         _progressBar.progressBarGO.SetActive(true);
                         IsCooking = true;
-                        
+                        return;
                     }
                     _ingDta.IsFryed = true;
                 }
@@ -88,9 +90,16 @@ public class Fry : MonoBehaviour
             {
                 if (_ingDta.IsFryed) return;
 
-                if (_ingDta.IsMeat) FinishMeat();
+                if (_ingDta.IsMeat)
+                {
+                    _progressBar.progressBarGO.SetActive(true);
+                    FinishMeat();
+                    IsCooking = false;
+                    StartCoroutine(CoolDown(30f));
+                    return;
+                }
                 IsCooking = false;
-                StartCoroutine(CoolDown(3f));
+                StartCoroutine(CoolDown(30f));
             } catch { }
             
         }
@@ -101,6 +110,8 @@ public class Fry : MonoBehaviour
     {
         CheckMeatProgress();
         CheckMeatState();
+        StartCoroutine(CoolDown(20f));
+        _ingDta.IsFryed = true;
         Debug.Log(_ingDta.IngCookingState.ToString());
     }
 
@@ -112,9 +123,13 @@ public class Fry : MonoBehaviour
         if (_secondTimer >= maxTime)
         {
             IsCooking = false;
+            {
+                //_progressBar.gameObject.SetActive(false);
+            }
             try { if (_ingDta.IsMeat) { FinishMeat(); } } catch { }
             _secondTimer = 0f;
         }
+
         //Debug.Log(_secondTimer.ToString());
     }
 

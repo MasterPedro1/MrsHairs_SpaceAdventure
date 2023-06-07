@@ -12,9 +12,9 @@ public class Dish : MonoBehaviour
     [HideInInspector] public int NumberOfIngredients;
     [HideInInspector] public float TotalCookingTime;
     public List<Ingredient> Ingredients = new List<Ingredient>();
-    private enum MeatState { Azul, Rojo, TerminoMedio, TresCuartos, BienCocido }
-    [SerializeField] MeatState MeatFryedState;
-    //[SerializeField] string indFState;
+    //private enum MeatState { Azul, Rojo, TerminoMedio, TresCuartos, BienCocido }
+    //[SerializeField] MeatState MeatFryedState;
+    [SerializeField] string MeatFryedState;
 
     [Header("Dish")]
     [SerializeField] string tagName = "Ingredient";
@@ -46,6 +46,7 @@ public class Dish : MonoBehaviour
 
             if (IsIngredientReady())
             {
+
                 AddIngredientsToList();
                 CheckIngredients();
             }
@@ -79,11 +80,12 @@ public class Dish : MonoBehaviour
             {
                 if (Ingredients[j].IngredientName == IngredientsNames[i])
                 {
+                    _ingData.gameObject.SetActive(false);
                     counter++;
                     if (counter >= NumberOfIngredients)
                     {
                         areAllIngredients = true;
-                        IngredientsNames.Clear();
+                        //IngredientsNames.Clear();
                     }
                 }
             }
@@ -102,7 +104,7 @@ public class Dish : MonoBehaviour
             case IngredientData.IngredientTypes.IsFryable:
                 if (_ingData.IsMeat)
                 {
-                    if (MeatFryedState.ToString() != _ingData.IngCookingState.ToString())
+                    if (MeatFryedState != _ingData.IngCookingState.ToString())
                     {
                         return false;
                     }
@@ -113,7 +115,7 @@ public class Dish : MonoBehaviour
             case IngredientData.IngredientTypes.IsBoth:
                 if (_ingData.IsMeat)
                 {
-                    if (MeatFryedState.ToString() != _ingData.IngCookingState.ToString())
+                    if (MeatFryedState != _ingData.IngCookingState.ToString())
                     {
                         return false;
                     }
