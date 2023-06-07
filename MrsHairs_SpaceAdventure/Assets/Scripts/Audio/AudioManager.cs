@@ -42,12 +42,11 @@ public class AudioManager : MonoBehaviour
         if (s == null) { return; }
         s.source.Play();
     }
-    public float GetAudiotTime() { return GetComponent<AudioSource>().time; }
-    public float GetAudiotLength() { return GetComponent<AudioSource>().clip.length; }
-    public void CallEnd() { StartCoroutine(CountToEnd()); }
-    IEnumerator CountToEnd()
-    {
-        while (GetComponent<AudioSource>().isPlaying) { yield return null; }
-        FindObjectOfType<HiddenObjectManager>().CallEnd();
-    }
+    //public float GetAudiotTime() { return GetComponent<AudioSource>().time; }
+    //public float GetAudiotLength() { return GetComponent<AudioSource>().clip.length; }
+    //public void CallEnd() { StartCoroutine(CountToEnd()); }
+    //IEnumerator CountToEnd()
+    //{
+    //    while (GetComponent<AudioSource>().isPlaying) { yield return null; }
+    //}
 }
