@@ -48,6 +48,7 @@ public class OrderManager : MonoBehaviour
         else
         {
             print("Incorrect order");
+            GameManager.Instance.DecreaseScore(500f);
         }
         plateTocheck.ReturnPlate();
     }
@@ -90,6 +91,7 @@ public class OrderManager : MonoBehaviour
             visualOrders[activeOrders.IndexOf(activeOrder)].timer.value = (activeOrder.timeLimit - 0) / (ordersTimeLimit - 0) * (1 - 0) + 0;
             if (activeOrder.timeLimit <= 0)
             {
+                GameManager.Instance.DecreaseScore(500f);
                 ClearVisualOrder(activeOrders.IndexOf(activeOrder));
                 closedOrderIndx.Add(activeOrders.IndexOf(activeOrder));
             }

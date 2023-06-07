@@ -278,7 +278,7 @@ MonoBehaviour:
   Ingredients:
   - {fileID: 11400000, guid: b184b7b205f804f4abcbd88656a3cf43, type: 2}
   - {fileID: 11400000, guid: 254f1890aab97224fbb82dcd98182a8e, type: 2}
-  MeatFryedState: 4
+  MeatFryedState: BienCocido
   tagName: Ingredient
   preDish: {fileID: 2997264281786493604}
   finishedDish: {fileID: 5065971677933186509}
@@ -348,7 +348,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1970307688059069284}
         m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
         m_MethodName: GlowUp
         m_Mode: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1970307688059069284}
         m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
         m_MethodName: GlowDown
         m_Mode: 1
@@ -401,10 +401,106 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3223403483686516357}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: ObjectGrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3223403483686516357}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: DisableGlow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1970307688059069284}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: ObjectGrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1970307688059069284}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: DisableGlow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3223403483686516357}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: ObjectDropped
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1970307688059069284}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: GlowDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3223403483686516357}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: ObjectDropped
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1970307688059069284}
+        m_TargetAssemblyTypeName: GlowObjects, Assembly-CSharp
+        m_MethodName: GlowDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -1028,6 +1124,7 @@ GameObject:
   - component: {fileID: 1636546355976440493}
   - component: {fileID: 68950528818866393}
   - component: {fileID: 2990108737580639811}
+  - component: {fileID: 1970307688059069284}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1078,7 +1175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 26e8305d61726db4a86163c4856ef197, type: 2}
+  - {fileID: 2100000, guid: ce4d426a7d608b245a7c89077669a604, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1100,3 +1197,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1970307688059069284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8662023170324405916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b97c493d3f5e58408b9ce648e7696fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: ce4d426a7d608b245a7c89077669a604, type: 2}
+  rendererMat: {fileID: 2990108737580639811}
+  isGrabbable: 1
