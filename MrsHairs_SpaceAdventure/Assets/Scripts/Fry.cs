@@ -31,8 +31,12 @@ public class Fry : MonoBehaviour
     {       
         if (other.CompareTag("Food"))
         {
+
+            Debug.Log("No entro el try");
+
             try
             {
+                Debug.Log("Entro el try");
                 _dishData = other.GetComponent<Dish>();
                 _otherRb = other.GetComponent<Rigidbody>();
                 if(!_dishData.IsReadyToCook) { return; }
@@ -95,11 +99,11 @@ public class Fry : MonoBehaviour
                     _progressBar.progressBarGO.SetActive(true);
                     FinishMeat();
                     IsCooking = false;
-                    StartCoroutine(CoolDown(30f));
+                    StartCoroutine(CoolDown(7f));
                     return;
                 }
                 IsCooking = false;
-                StartCoroutine(CoolDown(30f));
+                StartCoroutine(CoolDown(7f));
             } catch { }
             
         }
@@ -110,7 +114,7 @@ public class Fry : MonoBehaviour
     {
         CheckMeatProgress();
         CheckMeatState();
-        StartCoroutine(CoolDown(20f));
+        StartCoroutine(CoolDown(2.5f));
         _ingDta.IsFryed = true;
         Debug.Log(_ingDta.IngCookingState.ToString());
     }
