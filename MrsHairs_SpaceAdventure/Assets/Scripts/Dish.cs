@@ -81,6 +81,7 @@ public class Dish : MonoBehaviour
                 if (Ingredients[j].IngredientName == IngredientsNames[i])
                 {
                     _ingData.gameObject.SetActive(false);
+                    _ingData.ResetData();
                     counter++;
                     if (counter >= NumberOfIngredients)
                     {
