@@ -13,10 +13,10 @@ public class IngredientData : MonoBehaviour
         IsCuttable, IsFryable, IsBoth
     }
     public IngredientTypes IngTypes;
-    [HideInInspector] public bool IsCutted;
+     public bool IsCutted;
 
     [Header("Fryable Settings")]
-    [HideInInspector] public bool IsFryed;
+     public bool IsFryed;
     [HideInInspector] public float CookingTime;
     public enum IngredientCookingState
     {

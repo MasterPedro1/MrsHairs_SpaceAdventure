@@ -36,6 +36,7 @@ public class ObjDispenser : MonoBehaviour
         return objt;
     }
 
+    [ContextMenu("Get Item")]
     public void GetObject()
     {
         for (int i = 0; i < _ingredientsPool.Count; i++)
@@ -44,6 +45,7 @@ public class ObjDispenser : MonoBehaviour
             {
                 ResetObjPosition(_ingredientsPool[i].transform);
                 _ingredientsPool[i].SetActive(true);
+                try { _ingredientsPool[i].gameObject.GetComponent<IngredientData>().ResetData(); } catch { }
                 break;
             }
         }

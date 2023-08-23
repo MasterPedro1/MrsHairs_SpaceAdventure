@@ -15,6 +15,7 @@ public class Cuttable : MonoBehaviour
     private void Start()
     {
         _itemD = ItemDurability;
+        ResetGameObject();
     }
     private void OnTriggerEnter(Collider other)
     {        
