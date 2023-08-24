@@ -116,6 +116,7 @@ public class Fry : MonoBehaviour
         CheckMeatState();
         StartCoroutine(CoolDown(2.5f));
         _ingDta.IsFryed = true;
+        _progressBar.progressBarGO.SetActive(false); 
         Debug.Log(_ingDta.IngCookingState.ToString());
     }
 
