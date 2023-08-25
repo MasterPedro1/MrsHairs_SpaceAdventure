@@ -33,6 +33,7 @@ public class Plate : MonoBehaviour
                 PlaceDish(collision.gameObject.GetComponentInParent<Dish>().DishName, collision.gameObject.GetComponentInParent<Dish>().finishedDish);
                 //Destroy(collision.gameObject);
                 collision.gameObject.SetActive(false);
+                collision.gameObject.GetComponent<Dish>().ResetDishData();
             }
         }
     }

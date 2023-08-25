@@ -126,4 +126,14 @@ public class Dish : MonoBehaviour
         }
         return false;
     }
+
+
+    public void ResetDishData()
+    {
+        IsReadyToCook = false;
+        IsDishFinished = false;
+        preDish.SetActive(true);
+        finishedDish.SetActive(false);
+        NumberOfIngredients = Ingredients.Count;
+    }
 }

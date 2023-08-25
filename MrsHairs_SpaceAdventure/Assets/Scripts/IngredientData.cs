@@ -22,7 +22,7 @@ public class IngredientData : MonoBehaviour
     {
         Azul, Rojo, TerminoMedio, TresCuartos, BienCocido
     }
-    [HideInInspector] public IngredientCookingState IngCookingState;
+     public IngredientCookingState IngCookingState;
 
 
     private void Awake()
