@@ -28,14 +28,14 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _Texture_Map:
-        m_Texture: {fileID: 2800000, guid: 9dcd1b07edc70824a9900964b47ae56b, type: 3}
+        m_Texture: {fileID: 2800000, guid: a4cc18c72cdc8c9489659fb4b34e0b99, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -53,9 +53,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _Fresnel_Intensity: 5.88
-    - _Intensity: 1.4
+    - _Intensity: 10
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 0, b: 0.009685516, a: 1}
   m_BuildTextureStacks: []
