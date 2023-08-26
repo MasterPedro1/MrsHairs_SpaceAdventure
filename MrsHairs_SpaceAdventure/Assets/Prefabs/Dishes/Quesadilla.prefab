@@ -479,7 +479,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &3797031802133380126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -894,6 +894,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 712367303791940084}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &3797921431171754974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370350254871162021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019890433, y: 0.019781468, z: 0.0008410414}
+  m_Center: {x: 0, y: 0.00010926972, z: 0.000000007450581}
 --- !u!114 &154120324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,19 +922,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 28bfa3702e193a346a01a43597fe075b, type: 2}
   rendererMat: {fileID: 2171654109281488240}
   isGrabbable: 1
---- !u!65 &3797921431171754974
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370350254871162021}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.019890433, y: 0.019781468, z: 0.0008410414}
-  m_Center: {x: 0, y: 0.00010926972, z: 0.000000007450581}
 --- !u!4 &1038201985966437919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e85ec607fbd27c4fa93e46c0b399f23,

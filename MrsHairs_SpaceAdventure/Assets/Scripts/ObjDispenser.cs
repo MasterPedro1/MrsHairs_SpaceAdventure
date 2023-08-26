@@ -45,7 +45,11 @@ public class ObjDispenser : MonoBehaviour
             {
                 ResetObjPosition(_ingredientsPool[i].transform);
                 _ingredientsPool[i].SetActive(true);
-                try { _ingredientsPool[i].gameObject.GetComponent<IngredientData>().ResetData(); } catch { }
+                try 
+                { 
+                    _ingredientsPool[i].gameObject.GetComponent<IngredientData>().ResetData();
+                    _ingredientsPool[i].gameObject.GetComponent<Cuttable>().ResetGameObject();
+                } catch { }
                 break;
             }
         }

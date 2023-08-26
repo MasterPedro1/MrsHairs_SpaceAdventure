@@ -45,7 +45,7 @@ public class IngredientData : MonoBehaviour
             {
                 var isC = GetComponent<Cuttable>();
                 isC.ResetGameObject();
-            }catch { }
+            } catch { }
         }
     }
 }

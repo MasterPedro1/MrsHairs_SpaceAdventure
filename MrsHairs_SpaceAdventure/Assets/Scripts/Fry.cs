@@ -32,7 +32,7 @@ public class Fry : MonoBehaviour
         if (other.CompareTag("Food"))
         {
 
-            Debug.Log("No entro el try");
+            //Debug.Log("No entro el try");
 
             try
             {
@@ -74,6 +74,7 @@ public class Fry : MonoBehaviour
                     {
                         Debug.Log("Es carne");
                         other.gameObject.transform.SetParent(parentTransform, true);
+                        other.gameObject.transform.rotation = Quaternion.identity;
                         _progressBar.progressBarGO.SetActive(true);
                         IsCooking = true;
                         return;
@@ -90,19 +91,21 @@ public class Fry : MonoBehaviour
     {
         if (other.CompareTag("Ingredient"))
         {
+            other.gameObject.transform.SetParent(parentTransform, false);
             try
             {
                 if (_ingDta.IsFryed) return;
 
                 if (_ingDta.IsMeat)
                 {
-                    _progressBar.progressBarGO.SetActive(true);
+                    _progressBar.progressBarGO.SetActive(false);
                     FinishMeat();
                     IsCooking = false;
                     StartCoroutine(CoolDown(7f));
                     return;
                 }
                 IsCooking = false;
+                
                 StartCoroutine(CoolDown(7f));
             } catch { }
             
