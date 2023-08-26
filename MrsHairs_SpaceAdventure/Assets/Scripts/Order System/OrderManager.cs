@@ -16,12 +16,14 @@ public class OrderManager : MonoBehaviour
     [Space(2.5f), Header("Orders to appear")]
     public int orderListLimit = 5;
     public float orderAdditionTimer = 7.5f;
+    public float gorditaAdditionTimer = 30;
     public List<Order> activeOrders = new List<Order>();
 
     [Space(2.5f), Header("Order details")]
     public float ordersTimeLimit = 30;
     public int minDishQuantity = 2, maxDishQuantity = 4;
     public List<Dish> possibleDishes = new List<Dish>();
+    public Dish gorditaDish;
 
     private List<int> closedOrderIndx = new List<int>();
 
@@ -33,6 +35,7 @@ public class OrderManager : MonoBehaviour
     {
         StartCoroutine(PlaceOrder());
         StartCoroutine(OrderTimer());
+        StartCoroutine(NewDishTimer(gorditaAdditionTimer));
     }  
     public void CheckDelivery(WorldOrder orderToCheck, Plate plateTocheck)
     {
@@ -100,6 +103,13 @@ public class OrderManager : MonoBehaviour
         RemoveOrder();
         StartCoroutine(OrderTimer());
     }
+
+    IEnumerator NewDishTimer(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        possibleDishes.Add(gorditaDish);
+    }
+
     private void ClearVisualOrder(int indx)
     {
         visualOrders[indx].detailsText.text = "";
