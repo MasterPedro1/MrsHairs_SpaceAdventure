@@ -42,24 +42,25 @@ public class OrderManager : MonoBehaviour
         {
             ClearVisualOrder(orderIndx);
             closedOrderIndx.Add(orderIndx);
-            GameManager.Instance.IncreaseScore(500f);
+            GameManager.Instance.IncreaseScore(435f);
             if (isTutorial) GameManager.Instance.StopTutorial();
         }
         else
         {
             print("Incorrect order");
-            GameManager.Instance.DecreaseScore(500f);
+            GameManager.Instance.DecreaseScore(215f);
         }
         plateTocheck.ReturnPlate();
     }
     IEnumerator PlaceOrder()
     {
-        yield return new WaitForSeconds(orderAdditionTimer);
+        
 
         if (createOrders && activeOrders.Count < orderListLimit)
         {
             CreateOrder();
         }
+        yield return new WaitForSeconds(orderAdditionTimer);
         StartCoroutine(PlaceOrder());
     }
     private bool CompareDishes(Dictionary<string, int> plateDictionary, Dictionary<string, int> orderDictionary)

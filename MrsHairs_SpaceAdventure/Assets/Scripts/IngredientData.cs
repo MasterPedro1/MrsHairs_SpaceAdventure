@@ -13,16 +13,16 @@ public class IngredientData : MonoBehaviour
         IsCuttable, IsFryable, IsBoth
     }
     public IngredientTypes IngTypes;
-    [HideInInspector] public bool IsCutted;
+     public bool IsCutted;
 
     [Header("Fryable Settings")]
-    [HideInInspector] public bool IsFryed;
+     public bool IsFryed;
     [HideInInspector] public float CookingTime;
     public enum IngredientCookingState
     {
         Azul, Rojo, TerminoMedio, TresCuartos, BienCocido
     }
-    [HideInInspector] public IngredientCookingState IngCookingState;
+     public IngredientCookingState IngCookingState;
 
 
     private void Awake()
@@ -45,7 +45,7 @@ public class IngredientData : MonoBehaviour
             {
                 var isC = GetComponent<Cuttable>();
                 isC.ResetGameObject();
-            }catch { }
+            } catch { }
         }
     }
 }

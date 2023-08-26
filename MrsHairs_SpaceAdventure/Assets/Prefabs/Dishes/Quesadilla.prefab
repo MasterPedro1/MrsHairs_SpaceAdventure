@@ -437,7 +437,6 @@ GameObject:
   - component: {fileID: 3797031802133380126}
   - component: {fileID: 3797031802133380113}
   - component: {fileID: 3797031802133380112}
-  - component: {fileID: 3797031802133380115}
   - component: {fileID: 2140737070}
   m_Layer: 7
   m_Name: Quesadilla
@@ -480,7 +479,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &3797031802133380126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -531,19 +530,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressSlider: {fileID: 3797031800269245408}
   progressBarGO: {fileID: 3797031801325098047}
---- !u!65 &3797031802133380115
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3797031802133380121}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.08, z: 0.1}
-  m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!114 &2140737070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,6 +894,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 712367303791940084}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &3797921431171754974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370350254871162021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019890433, y: 0.019781468, z: 0.0008410414}
+  m_Center: {x: 0, y: 0.00010926972, z: 0.000000007450581}
 --- !u!114 &154120324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,6 +1040,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5299627989284245262}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1034100581367489357
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993759996468294239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.29130784, z: 2.05}
+  m_Center: {x: -0.45, y: -0.01314743, z: 0}
 --- !u!4 &5622382320850577637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ee9d571b413ef546ad5e2c2b7aa710a,

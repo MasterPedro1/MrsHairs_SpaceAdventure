@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signalObj: {fileID: 3831795816880771412}
-  displacementSpeed: 3.25
-  rotationSpeed: 4.5
-  displacement: {x: 1, y: 2.5, z: 1}
-  activateSignal:
+  displacementSpeed: 0.75
+  rotationSpeed: 125
+  displacement: {x: 0, y: 0.25, z: 0}
+  _activateSignal:
     m_PersistentCalls:
       m_Calls: []
-  deactivateSignal:
+  _deactivateSignal:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6369423390352834397
@@ -142,6 +142,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 23548465676986516, guid: 37f8dc60510752b42911fb70bb75cbe2,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23548465676986516, guid: 37f8dc60510752b42911fb70bb75cbe2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca0b07b04e30fb8408bbabb7bbbdaa44, type: 2}
+    - target: {fileID: 23548465676986516, guid: 37f8dc60510752b42911fb70bb75cbe2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a33ed502185220a4d97ede3de7fd9163, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37f8dc60510752b42911fb70bb75cbe2, type: 3}
 --- !u!4 &4404792649111448416 stripped

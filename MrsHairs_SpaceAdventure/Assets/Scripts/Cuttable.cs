@@ -15,6 +15,7 @@ public class Cuttable : MonoBehaviour
     private void Start()
     {
         _itemD = ItemDurability;
+        ResetGameObject();
     }
     private void OnTriggerEnter(Collider other)
     {        
@@ -42,12 +43,12 @@ public class Cuttable : MonoBehaviour
             ingData.IsCutted = true;
             progressBar.progressBarGO.SetActive(false);
         }
-        Debug.Log(ItemDurability);
+        //Debug.Log("Algo golpeó: " + ItemDurability);
     }
 
     public void ResetGameObject()
     {
-        ItemDurability = _itemD;
+        if (ItemDurability <= 0) ItemDurability = _itemD;
         normalGameObject.SetActive(true);
         cuttedGameObject.SetActive(false);
     }

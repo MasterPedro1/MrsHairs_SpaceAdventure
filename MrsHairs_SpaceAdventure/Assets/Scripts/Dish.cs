@@ -105,10 +105,10 @@ public class Dish : MonoBehaviour
             case IngredientData.IngredientTypes.IsFryable:
                 if (_ingData.IsMeat)
                 {
-                    if (MeatFryedState != _ingData.IngCookingState.ToString())
+                    /*if (MeatFryedState != _ingData.IngCookingState.ToString())
                     {
                         return false;
-                    }
+                    }*/
                 }
                 if (_ingData.IsFryed) { return true; }
                 break;
@@ -116,14 +116,24 @@ public class Dish : MonoBehaviour
             case IngredientData.IngredientTypes.IsBoth:
                 if (_ingData.IsMeat)
                 {
-                    if (MeatFryedState != _ingData.IngCookingState.ToString())
+                    /*if (MeatFryedState != _ingData.IngCookingState.ToString())
                     {
                         return false;
-                    }
+                    }*/
                 }
                 if (_ingData.IsCutted && _ingData.IsFryed) return true;
                 break;
         }
         return false;
+    }
+
+
+    public void ResetDishData()
+    {
+        IsReadyToCook = false;
+        IsDishFinished = false;
+        preDish.SetActive(true);
+        finishedDish.SetActive(false);
+        NumberOfIngredients = Ingredients.Count;
     }
 }
