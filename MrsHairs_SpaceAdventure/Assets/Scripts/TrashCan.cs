@@ -5,13 +5,13 @@ using static IngredientData;
 
 public class TrashCan : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Ingredient"))
+        if (other.gameObject.CompareTag("Ingredient"))
         {
-            try  
+            try
             {
-                var restD = other.GetComponent<IngredientData>();
+                var restD = other.gameObject.GetComponent<IngredientData>();
                 restD.ResetData();
                 if (restD.IngTypes == IngredientTypes.IsCuttable)
                 {
@@ -21,13 +21,16 @@ public class TrashCan : MonoBehaviour
                         isC.ResetGameObject();
                     }
                     catch { Debug.Log("TrashCan no pudo resetar el corte"); }
+                    //other.gameObject.SetActive(false);
                 }
-            } catch { Debug.Log("Trash no pudo acceder a ingredient Data"); }
+            }
+            catch { Debug.Log("Trash no pudo acceder a ingredient Data"); }
+            other.gameObject.SetActive(false);
         }
-        if (other.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Food"))
         {
-            try { other.GetComponent<Dish>().ResetDishData(); } catch { Debug.Log("Trash no pudo acceder a Dish Data"); }
+            try { other.gameObject.GetComponent<Dish>().ResetDishData(); } catch { Debug.Log("Trash no pudo acceder a Dish Data"); }
+            other.gameObject.SetActive(false);
         }
-        other.gameObject.SetActive(false);
     }
 }

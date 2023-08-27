@@ -35,7 +35,7 @@ public class OrderManager : MonoBehaviour
     {
         StartCoroutine(PlaceOrder());
         StartCoroutine(OrderTimer());
-        StartCoroutine(NewDishTimer(gorditaAdditionTimer));
+        if (!isTutorial) StartCoroutine(NewDishTimer(gorditaAdditionTimer));
     }  
     public void CheckDelivery(WorldOrder orderToCheck, Plate plateTocheck)
     {

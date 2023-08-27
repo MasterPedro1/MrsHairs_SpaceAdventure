@@ -43,15 +43,18 @@ public class Fry : MonoBehaviour
                 if (_dishData.IsDishFinished) { return; }
                 if (!IsCoolDownOn)
                 {
-                    other.gameObject.transform.SetParent(parentTransform, true);
-                    _otherRb.constraints = RigidbodyConstraints.FreezeAll;
+                    //other.gameObject.transform.SetParent(parentTransform, true);
+                    //_otherRb.constraints = RigidbodyConstraints.FreezeAll;
 
                     cookingTime = _dishData.TotalCookingTime;
                     other.gameObject.TryGetComponent(out _progressBar);
-                    cookingBounds.SetActive(true);
+                    //cookingBounds.SetActive(true);
                     _foodT = other.transform;
                     _progressBar.progressBarGO.SetActive(true);
                     _foodT.transform.eulerAngles = new Vector3(0f, _foodT.rotation.y, 0f);
+                    other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                    other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;
+                    other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX;
                     IsCooking = true;
                     StartCoroutine(Cooking(_dishData.TotalCookingTime));
                 }
@@ -65,16 +68,25 @@ public class Fry : MonoBehaviour
             {
                 try
                 {
+                    //other.GetComponent<Rigidbody>().isKinematic = true;
                     _ingDta = other.GetComponent<IngredientData>();
                     _progressBar = other.GetComponent<ProgressBar>();
                     cookingTime = _ingDta.CookingTime;
 
                     if (_ingDta.IsFryed) return;
+
+                    if (IsCooking) return;
+                    
                     if (_ingDta.IsMeat)
                     {
                         Debug.Log("Es carne");
-                        other.gameObject.transform.SetParent(parentTransform, true);
+                        //other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                        /*other.gameObject.transform.SetParent(parentTransform, true);
+                        */
+                        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+                        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
                         other.gameObject.transform.rotation = Quaternion.identity;
+                        other.transform.position = parentTransform.position;
                         _progressBar.progressBarGO.SetActive(true);
                         IsCooking = true;
                         return;
@@ -90,12 +102,15 @@ public class Fry : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Ingredient"))
-        {
-            other.gameObject.transform.SetParent(parentTransform, false);
+        {            
             try
             {
                 if (_ingDta.IsFryed) return;
+                if (IsCooking) return;
 
+                other.gameObject.transform.SetParent(null);
+                other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                other.GetComponent<Rigidbody>().isKinematic = false;
                 if (_ingDta.IsMeat)
                 {
                     _progressBar.progressBarGO.SetActive(false);
@@ -118,6 +133,8 @@ public class Fry : MonoBehaviour
         CheckMeatProgress();
         CheckMeatState();
         StartCoroutine(CoolDown(2.5f));
+        _ingDta.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        _ingDta.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         _ingDta.IsFryed = true;
         _progressBar.progressBarGO.SetActive(false); 
         Debug.Log(_ingDta.IngCookingState.ToString());
@@ -178,8 +195,8 @@ public class Fry : MonoBehaviour
 
     private IEnumerator Cooking(float time)
     {        
-            _foodT.gameObject.transform.SetParent(this.transform, true);
-            _foodT.position = cookingBounds.transform.position;
+            _foodT.gameObject.transform.SetParent(transform.parent, true);
+            //_foodT.position = cookingBounds.transform.position;
             
         yield return new WaitForSeconds(time);
             cookingBounds.SetActive(false);

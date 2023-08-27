@@ -36,6 +36,7 @@ public class IngredientData : MonoBehaviour
 
     public void ResetData()
     {
+        CookingTime = ingredient.cookingTime;
         IngCookingState = IngredientCookingState.Azul;
         IsCutted = false;
         IsFryed = false;

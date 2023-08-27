@@ -8,10 +8,12 @@ public class GlowObjects : MonoBehaviour
     [SerializeField] Renderer rendererMat;
     [SerializeField] bool isGrabbable = true;
     bool _isGrabbed = false;
+    Vector3 _scale;
 
     private void Start()
     {
         GlowDown();
+        _scale = transform.localScale;
     }
 
     public void GlowUp()
@@ -43,12 +45,14 @@ public class GlowObjects : MonoBehaviour
     public void ObjectGrabbed()
     {
         _isGrabbed = true;
+        transform.localScale = _scale;
     }
 
     public void ObjectDropped()
     {
         _isGrabbed = false;
         GlowDown();
+        transform.localScale = _scale;
     }
 
     public void DisableGlow()
