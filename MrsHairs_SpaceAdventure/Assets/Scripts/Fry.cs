@@ -50,12 +50,15 @@ public class Fry : MonoBehaviour
                     other.gameObject.TryGetComponent(out _progressBar);
                     //cookingBounds.SetActive(true);
                     _foodT = other.transform;
+                    other.transform.localScale = Vector3.one;
                     _progressBar.progressBarGO.SetActive(true);
                     _foodT.transform.eulerAngles = new Vector3(0f, _foodT.rotation.y, 0f);
                     other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                     other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;
                     other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX;
                     IsCooking = true;
+                    _dishData.IsDishCooking = true;
+                    _dishData.CheckIfCooking();
                     StartCoroutine(Cooking(_dishData.TotalCookingTime));
                 }
             }
@@ -116,12 +119,12 @@ public class Fry : MonoBehaviour
                     _progressBar.progressBarGO.SetActive(false);
                     FinishMeat();
                     IsCooking = false;
-                    StartCoroutine(CoolDown(7f));
+                    StartCoroutine(CoolDown(0.5f));
                     return;
                 }
                 IsCooking = false;
                 
-                StartCoroutine(CoolDown(7f));
+                StartCoroutine(CoolDown(0.5f));
             } catch { }
             
         }
@@ -132,7 +135,7 @@ public class Fry : MonoBehaviour
     {
         CheckMeatProgress();
         CheckMeatState();
-        StartCoroutine(CoolDown(2.5f));
+        StartCoroutine(CoolDown(.5f));
         _ingDta.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         _ingDta.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         _ingDta.IsFryed = true;
@@ -195,7 +198,7 @@ public class Fry : MonoBehaviour
 
     private IEnumerator Cooking(float time)
     {        
-            _foodT.gameObject.transform.SetParent(transform.parent, true);
+            //_foodT.gameObject.transform.SetParent(transform.parent, true);
             //_foodT.position = cookingBounds.transform.position;
             
         yield return new WaitForSeconds(time);
@@ -206,7 +209,9 @@ public class Fry : MonoBehaviour
             _progressBar.progressBarGO.SetActive(false);
             _foodT.gameObject.transform.SetParent(null);
             _otherRb.constraints = RigidbodyConstraints.None;
-            StartCoroutine(CoolDown(3f));
+            _dishData.IsDishCooking = false;
+            _dishData.CheckIfCooking();
+            StartCoroutine(CoolDown(.6f));
     }
 
 

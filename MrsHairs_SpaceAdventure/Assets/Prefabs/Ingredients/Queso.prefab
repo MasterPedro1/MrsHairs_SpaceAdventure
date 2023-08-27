@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 1365990330}
   - component: {fileID: 1365990329}
   - component: {fileID: 1735374585}
+  - component: {fileID: 1529640196}
   m_Layer: 6
   m_Name: Queso
   m_TagString: Ingredient
@@ -443,7 +444,7 @@ Transform:
   m_GameObject: {fileID: 5009948097237065435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.7196255, y: -2.377119, z: 5.514176}
-  m_LocalScale: {x: 0.76038814, y: 0.76038814, z: 0.76038814}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8802505991082200544}
@@ -830,6 +831,23 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: abf342288148d794f9e7cd893de1c9ea, type: 2}
   rendererMat: {fileID: 7666222035976861327}
   isGrabbable: 1
+--- !u!1818360610 &1529640196
+ScaleConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009948097237065435}
+  m_Enabled: 1
+  m_Weight: 1
+  m_ScaleAtRest: {x: 0.76038814, y: 0.76038814, z: 0.76038814}
+  m_ScaleOffset: {x: 1, y: 1, z: 1}
+  m_AffectScalingX: 1
+  m_AffectScalingY: 1
+  m_AffectScalingZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources: []
 --- !u!1 &5009948097588896374
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
 using static IngredientData;
 
 public class Dish : MonoBehaviour
@@ -19,7 +20,7 @@ public class Dish : MonoBehaviour
     [Header("Dish")]
     [SerializeField] string tagName = "Ingredient";
     public GameObject preDish, finishedDish;
-    public bool IsReadyToCook = false, IsDishFinished = false;
+    public bool IsReadyToCook = false, IsDishFinished = false, IsDishCooking = false;
 
     IngredientData _ingData;
     List<string> ingNames = new List<string>();
@@ -70,6 +71,12 @@ public class Dish : MonoBehaviour
         ingNames.Clear();
     }
 
+    public void CheckIfCooking()
+    {
+        var xRInt = GetComponent<XRGrabInteractable>();
+        if (IsDishCooking) xRInt.enabled = false;
+        if (!IsDishCooking) xRInt.enabled = true;
+    }
 
     public void CheckIngredients()
     {        
